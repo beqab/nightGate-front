@@ -7,6 +7,7 @@ import { Venue } from "@/data/venues";
 import { getVenueCopy } from "@/lib/localized-content";
 import { cn } from "@/lib/utils";
 import { formatNumber } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 
 interface VenueCardProps {
   venue: Venue;
@@ -54,6 +55,7 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
 
   if (variant === "featured") {
     return (
+      <Link href={`/venues/${venue.id}`}>
       <motion.div
         custom={index}
         variants={cardVariants}
@@ -122,17 +124,19 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
             ))}
           </div>
 
-          <button className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-gradient-to-r from-[#ea6390]/10 to-[#9e4280]/10 border border-[#ea6390]/15 text-[#ea6390] text-sm font-medium group-hover:border-[#ea6390]/30 group-hover:bg-[#ea6390]/15 transition-all duration-200">
+          <span className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-gradient-to-r from-[#ea6390]/10 to-[#9e4280]/10 border border-[#ea6390]/15 text-[#ea6390] text-sm font-medium group-hover:border-[#ea6390]/30 group-hover:bg-[#ea6390]/15 transition-all duration-200">
             <span>{t("venueCard.explore")}</span>
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1 duration-200" />
-          </button>
+          </span>
         </div>
       </motion.div>
+      </Link>
     );
   }
 
   // Default compact card
   return (
+    <Link href={`/venues/${venue.id}`}>
     <motion.div
       custom={index}
       variants={cardVariants}
@@ -182,5 +186,6 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
         </div>
       </div>
     </motion.div>
+    </Link>
   );
 }

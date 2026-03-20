@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Event } from "@/data/events";
 import { getEventCategoryLabel, getEventCopy } from "@/lib/localized-content";
 import { formatDate, formatNumber, getAttendancePercent } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 
 interface EventCardProps {
   event: Event;
@@ -39,6 +40,7 @@ export default function EventCard({
 
   if (variant === "featured") {
     return (
+      <Link href={`/events/${event.id}`}>
       <motion.div
         custom={index}
         variants={cardVariants}
@@ -141,7 +143,7 @@ export default function EventCard({
               </div>
             </div>
 
-            <motion.button
+            <motion.span
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               className={`w-full py-3 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 ${
@@ -149,19 +151,20 @@ export default function EventCard({
                   ? "bg-white/5 border border-white/10 text-white/30 cursor-not-allowed"
                   : "bg-gradient-to-r from-[#ea6390] to-[#9e4280] text-white shadow-[0_4px_24px_rgba(234,99,144,0.4)] hover:shadow-[0_4px_40px_rgba(234,99,144,0.6)]"
               }`}
-              disabled={isSoldOut}
             >
               <Ticket className="w-4 h-4" />
               {isSoldOut ? t("eventCard.soldOut") : t("eventCard.getTickets")}
-            </motion.button>
+            </motion.span>
           </div>
         </div>
       </motion.div>
+      </Link>
     );
   }
 
   // Default card
   return (
+    <Link href={`/events/${event.id}`}>
     <motion.div
       custom={index}
       variants={cardVariants}
@@ -232,15 +235,16 @@ export default function EventCard({
           </span>
         </div>
 
-        <motion.button
+        <motion.span
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
           className="w-full py-2.5 rounded-xl text-xs font-semibold bg-[#ea6390]/10 border border-[#ea6390]/20 text-[#ea6390] hover:bg-[#ea6390]/20 hover:border-[#ea6390]/40 hover:shadow-[0_0_16px_rgba(234,99,144,0.2)] transition-all duration-200 flex items-center justify-center gap-1.5"
         >
           <Ticket className="w-3.5 h-3.5" />
           {isSoldOut ? t("eventCard.soldOut") : t("eventCard.viewEvent")}
-        </motion.button>
+        </motion.span>
       </div>
     </motion.div>
+    </Link>
   );
 }
