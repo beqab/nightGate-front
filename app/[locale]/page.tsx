@@ -10,7 +10,6 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Divider */}
       <div className="neon-divider mx-auto max-w-7xl px-8" />
 
       <FeaturedEvents />

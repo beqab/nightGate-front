@@ -2,46 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Search, Ticket, Zap, Shield } from "lucide-react";
+import { useTranslations } from "next-intl";
 import SectionWrapper from "@/components/ui/SectionWrapper";
-
-const steps = [
-  {
-    icon: Search,
-    step: "01",
-    title: "Discover",
-    description:
-      "Browse curated events and premium venues filtered by vibe, date, and city. No algorithm — just quality picks.",
-    color: "#ea6390",
-    glow: "rgba(234, 99, 144, 0.2)",
-  },
-  {
-    icon: Ticket,
-    step: "02",
-    title: "Book",
-    description:
-      "Secure your ticket in seconds. VIP tables, guest list spots, or general admission — all in one tap.",
-    color: "#9e4280",
-    glow: "rgba(158, 66, 128, 0.2)",
-  },
-  {
-    icon: Zap,
-    step: "03",
-    title: "Experience",
-    description:
-      "Show up, scan your pass, and lose yourself. We handle the logistics. You handle the memories.",
-    color: "#6e2e80",
-    glow: "rgba(110, 46, 128, 0.2)",
-  },
-  {
-    icon: Shield,
-    step: "04",
-    title: "Trust",
-    description:
-      "Every venue is verified. Every event is real. Your payment is protected with bank-grade security.",
-    color: "#ea6390",
-    glow: "rgba(234, 99, 144, 0.2)",
-  },
-];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -53,13 +15,49 @@ const cardVariants = {
 };
 
 export default function HowItWorks() {
+  const t = useTranslations("howItWorks");
+  const steps = [
+    {
+      icon: Search,
+      step: "01",
+      title: t("steps.discover.title"),
+      description: t("steps.discover.description"),
+      color: "#ea6390",
+      glow: "rgba(234, 99, 144, 0.2)",
+    },
+    {
+      icon: Ticket,
+      step: "02",
+      title: t("steps.book.title"),
+      description: t("steps.book.description"),
+      color: "#9e4280",
+      glow: "rgba(158, 66, 128, 0.2)",
+    },
+    {
+      icon: Zap,
+      step: "03",
+      title: t("steps.experience.title"),
+      description: t("steps.experience.description"),
+      color: "#6e2e80",
+      glow: "rgba(110, 46, 128, 0.2)",
+    },
+    {
+      icon: Shield,
+      step: "04",
+      title: t("steps.trust.title"),
+      description: t("steps.trust.description"),
+      color: "#ea6390",
+      glow: "rgba(234, 99, 144, 0.2)",
+    },
+  ];
+
   return (
     <SectionWrapper
       id="how-it-works"
-      label="The NightGate Way"
-      title="How It"
-      titleHighlight="Works"
-      subtitle="Getting to the best night of your life takes exactly four steps."
+      label={t("label")}
+      title={t("title")}
+      titleHighlight={t("titleHighlight")}
+      subtitle={t("subtitle")}
       centered
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-4">

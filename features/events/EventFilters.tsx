@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { categories, EventCategory } from "@/data/events";
+import { getEventCategoryLabel } from "@/lib/localized-content";
 import { cn } from "@/lib/utils";
 
 interface EventFiltersProps {
@@ -16,18 +18,6 @@ interface EventFiltersProps {
   onClear: () => void;
 }
 
-const priceFilters = [
-  { value: "all", label: "All Prices" },
-  { value: "free", label: "Free Entry" },
-  { value: "paid", label: "Paid" },
-] as const;
-
-const sortOptions = [
-  { value: "date", label: "By Date" },
-  { value: "price", label: "By Price" },
-  { value: "popularity", label: "Popularity" },
-] as const;
-
 export default function EventFilters({
   selectedCategory,
   onCategoryChange,
@@ -38,7 +28,18 @@ export default function EventFilters({
   resultCount,
   onClear,
 }: EventFiltersProps) {
+  const t = useTranslations();
   const hasActiveFilters = selectedCategory !== "All" || selectedPrice !== "all";
+  const priceFilters = [
+    { value: "all", label: t("eventFilters.prices.all") },
+    { value: "free", label: t("eventFilters.prices.free") },
+    { value: "paid", label: t("eventFilters.prices.paid") },
+  ] as const;
+  const sortOptions = [
+    { value: "date", label: t("eventFilters.sort.date") },
+    { value: "price", label: t("eventFilters.sort.price") },
+    { value: "popularity", label: t("eventFilters.sort.popularity") },
+  ] as const;
 
   return (
     <div className="space-y-4">
@@ -47,7 +48,7 @@ export default function EventFilters({
         <div className="flex items-center gap-2 text-white/50 text-sm">
           <SlidersHorizontal className="w-4 h-4 text-[#ea6390]" />
           <span>
-            <span className="font-semibold text-white">{resultCount}</span> events found
+            {t("eventFilters.found", { count: resultCount })}
           </span>
         </div>
         <div className="flex items-center gap-3">
@@ -59,7 +60,7 @@ export default function EventFilters({
               className="flex items-center gap-1.5 text-xs text-[#ea6390] hover:text-white border border-[#ea6390]/20 hover:border-[#ea6390]/50 px-3 py-1.5 rounded-full transition-all"
             >
               <X className="w-3 h-3" />
-              Clear filters
+              {t("eventFilters.clear")}
             </motion.button>
           )}
           {/* Sort */}
@@ -93,7 +94,7 @@ export default function EventFilters({
               : "bg-white/4 text-white/50 border-white/10 hover:text-white hover:border-white/20"
           )}
         >
-          All
+          {t("eventFilters.all")}
         </button>
         {categories.map((cat) => (
           <button
@@ -106,14 +107,16 @@ export default function EventFilters({
                 : "bg-white/4 text-white/50 border-white/10 hover:text-white hover:border-white/20"
             )}
           >
-            {cat}
+            {getEventCategoryLabel(t, cat)}
           </button>
         ))}
       </div>
 
       {/* Price filter */}
       <div className="flex items-center gap-2">
-        <span className="text-xs text-white/30 uppercase tracking-wider">Price:</span>
+        <span className="text-xs text-white/30 uppercase tracking-wider">
+          {t("eventFilters.price")}:
+        </span>
         <div className="flex gap-2">
           {priceFilters.map((pf) => (
             <button

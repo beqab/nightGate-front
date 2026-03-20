@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import GlowOrb from "@/components/ui/GlowOrb";
+import { Link as LocaleLink } from "@/i18n/navigation";
 
 export default function CtaBanner() {
+  const t = useTranslations("ctaBanner");
+
   return (
     <section className="relative overflow-hidden section-padding">
       {/* Background */}
@@ -28,30 +31,30 @@ export default function CtaBanner() {
           className="space-y-6"
         >
           <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-[#ea6390]">
-            Don't miss out
+            {t("eyebrow")}
           </span>
           <h2
             className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tighter"
           >
-            Your next{" "}
-            <span className="gradient-text">legendary night</span>
+            {t("titleBefore")}{" "}
+            <span className="gradient-text">{t("titleHighlight")}</span>
             <br />
-            starts here.
+            {t("titleAfter")}
           </h2>
           <p className="text-base md:text-lg text-white/40 max-w-xl mx-auto">
-            Join 98,000+ night owls who never miss a beat. Get early access, exclusive drops, and VIP alerts.
+            {t("description")}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Link href="/events">
+            <LocaleLink href="/events">
               <Button variant="primary" size="lg" glow icon={<ArrowRight className="w-4 h-4" />} iconPosition="right">
-                Browse Events
+                {t("browseEvents")}
               </Button>
-            </Link>
-            <Link href="/venues">
+            </LocaleLink>
+            <LocaleLink href="/venues">
               <Button variant="outline" size="lg">
-                Explore Venues
+                {t("exploreVenues")}
               </Button>
-            </Link>
+            </LocaleLink>
           </div>
         </motion.div>
       </div>

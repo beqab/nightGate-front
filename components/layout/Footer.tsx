@@ -1,27 +1,38 @@
-import Link from "next/link";
 import { Zap, Instagram, Twitter, Youtube } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-const footerLinks = {
-  Explore: [
-    { label: "Events", href: "/events" },
-    { label: "Venues", href: "/venues" },
-    { label: "Artists", href: "#" },
-    { label: "Cities", href: "#" },
-  ],
-  Company: [
-    { label: "About", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Press", href: "#" },
-    { label: "Blog", href: "#" },
-  ],
-  Legal: [
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
-    { label: "Cookies", href: "#" },
-  ],
-};
+export default async function Footer() {
+  const t = await getTranslations("footer");
+  const footerLinks = [
+    {
+      group: t("groups.explore"),
+      links: [
+        { label: t("links.events"), href: "/events" },
+        { label: t("links.venues"), href: "/venues" },
+        { label: t("links.artists"), href: "#" },
+        { label: t("links.cities"), href: "#" },
+      ],
+    },
+    {
+      group: t("groups.company"),
+      links: [
+        { label: t("links.about"), href: "#" },
+        { label: t("links.careers"), href: "#" },
+        { label: t("links.press"), href: "#" },
+        { label: t("links.blog"), href: "#" },
+      ],
+    },
+    {
+      group: t("groups.legal"),
+      links: [
+        { label: t("links.privacy"), href: "#" },
+        { label: t("links.terms"), href: "#" },
+        { label: t("links.cookies"), href: "#" },
+      ],
+    },
+  ] as const;
 
-export default function Footer() {
   return (
     <footer className="relative mt-auto border-t border-white/5">
       {/* Top glow */}
@@ -40,7 +51,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-white/40 leading-relaxed max-w-xs">
-              Your premium pass to the city&apos;s best nightlife. Discover events, venues, and experiences that hit different.
+              {t("description")}
             </p>
             <div className="flex items-center gap-3 mt-6">
               {[Instagram, Twitter, Youtube].map((Icon, i) => (
@@ -56,7 +67,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          {Object.entries(footerLinks).map(([group, links]) => (
+          {footerLinks.map(({ group, links }) => (
             <div key={group}>
               <h4 className="text-xs font-semibold tracking-widest uppercase text-white/30 mb-4">
                 {group}
@@ -80,10 +91,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/25">
-            © 2026 NightGate. All rights reserved.
+            {t("copyright")}
           </p>
           <p className="text-xs text-white/25">
-            Built for the night. Designed for the experience.
+            {t("tagline")}
           </p>
         </div>
       </div>

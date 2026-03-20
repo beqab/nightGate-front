@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Star, MapPin, Users, Clock, ChevronRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Venue } from "@/data/venues";
+import { getVenueCopy } from "@/lib/localized-content";
 import { cn } from "@/lib/utils";
+import { formatNumber } from "@/lib/utils";
 
 interface VenueCardProps {
   venue: Venue;
@@ -45,6 +48,10 @@ function RatingStars({ rating }: { rating: number }) {
 }
 
 export default function VenueCard({ venue, variant = "default", index = 0 }: VenueCardProps) {
+  const locale = useLocale();
+  const t = useTranslations();
+  const copy = getVenueCopy(t, venue);
+
   if (variant === "featured") {
     return (
       <motion.div
@@ -65,17 +72,17 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           {/* Type badge */}
           <span className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-white">
-            {venue.type}
+            {copy.typeLabel}
           </span>
           {/* Capacity */}
           <span className="absolute top-3 right-3 flex items-center gap-1 text-xs text-white/60 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/10">
             <Users className="w-3 h-3" />
-            {venue.capacity.toLocaleString()}
+            {formatNumber(venue.capacity, locale)}
           </span>
           {/* Venue name overlay */}
           <div className="absolute bottom-4 left-4 right-4">
             <h3 className="text-xl font-bold text-white drop-shadow-lg">
-              {venue.name}
+              {copy.name}
             </h3>
           </div>
         </div>
@@ -86,15 +93,17 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
             <div className="flex items-center gap-2">
               <RatingStars rating={venue.rating} />
               <span className="text-sm font-bold text-white">{venue.rating}</span>
-              <span className="text-xs text-white/35">({venue.reviews.toLocaleString()})</span>
+              <span className="text-xs text-white/35">
+                ({formatNumber(venue.reviews, locale)})
+              </span>
             </div>
             <span className="text-xs text-white/40 flex items-center gap-1">
               <Clock className="w-3 h-3" />
-              Until {venue.openTil}
+              {t("venueCard.until", { time: venue.openTil })}
             </span>
           </div>
 
-          <p className="text-sm text-white/50 line-clamp-2">{venue.description}</p>
+          <p className="text-sm text-white/50 line-clamp-2">{copy.description}</p>
 
           <div className="flex items-center gap-1.5 text-xs text-white/40">
             <MapPin className="w-3.5 h-3.5 text-[#9e4280]" />
@@ -114,7 +123,7 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
           </div>
 
           <button className="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-gradient-to-r from-[#ea6390]/10 to-[#9e4280]/10 border border-[#ea6390]/15 text-[#ea6390] text-sm font-medium group-hover:border-[#ea6390]/30 group-hover:bg-[#ea6390]/15 transition-all duration-200">
-            <span>Explore Venue</span>
+            <span>{t("venueCard.explore")}</span>
             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1 duration-200" />
           </button>
         </div>
@@ -142,7 +151,7 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <span className="absolute top-2 left-2 px-2 py-0.5 text-xs rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-white/70">
-          {venue.type}
+          {copy.typeLabel}
         </span>
       </div>
 
@@ -150,13 +159,15 @@ export default function VenueCard({ venue, variant = "default", index = 0 }: Ven
       <div className="p-4 space-y-2.5">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-base font-bold text-white group-hover:text-[#ea6390] transition-colors duration-200 leading-snug">
-            {venue.name}
+            {copy.name}
           </h3>
           <span className="text-sm font-bold text-[#ea6390] shrink-0">{venue.rating}</span>
         </div>
         <div className="flex items-center gap-1">
           <RatingStars rating={venue.rating} />
-          <span className="text-xs text-white/30 ml-1">({venue.reviews.toLocaleString()})</span>
+          <span className="text-xs text-white/30 ml-1">
+            ({formatNumber(venue.reviews, locale)})
+          </span>
         </div>
         <div className="flex items-center gap-1.5 text-xs text-white/40">
           <MapPin className="w-3 h-3 text-[#9e4280]" />

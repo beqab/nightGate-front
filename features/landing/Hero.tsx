@@ -3,45 +3,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Play, Star, Zap } from "lucide-react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import GlowOrb from "@/components/ui/GlowOrb";
-
-const floatingCards = [
-  {
-    top: "18%",
-    left: "6%",
-    title: "NEON CATHEDRAL",
-    sub: "Fabric Underground",
-    tag: "Techno",
-    gradient: "linear-gradient(135deg, #3f1b70, #ea6390)",
-    delay: 0,
-  },
-  {
-    top: "22%",
-    right: "5%",
-    title: "PINK FREQUENCY",
-    sub: "Rooftop 42",
-    tag: "House",
-    gradient: "linear-gradient(135deg, #ea6390, #9e4280)",
-    delay: 1.5,
-  },
-  {
-    bottom: "28%",
-    left: "4%",
-    title: "BABYLON NIGHTS",
-    sub: "The Grand",
-    tag: "R&B / VIP",
-    gradient: "linear-gradient(135deg, #6e2e80, #c84d77)",
-    delay: 0.8,
-  },
-];
-
-const statsData = [
-  { value: "1,200+", label: "Events this month" },
-  { value: "340+", label: "Premium venues" },
-  { value: "98K+", label: "Night owls" },
-];
+import { Link } from "@/i18n/navigation";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -62,12 +27,47 @@ const itemVariants = {
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("hero");
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const floatingCards = [
+    {
+      top: "18%",
+      left: "6%",
+      title: t("floatingCards.card1.title"),
+      sub: t("floatingCards.card1.sub"),
+      tag: t("floatingCards.card1.tag"),
+      gradient: "linear-gradient(135deg, #3f1b70, #ea6390)",
+      delay: 0,
+    },
+    {
+      top: "22%",
+      right: "5%",
+      title: t("floatingCards.card2.title"),
+      sub: t("floatingCards.card2.sub"),
+      tag: t("floatingCards.card2.tag"),
+      gradient: "linear-gradient(135deg, #ea6390, #9e4280)",
+      delay: 1.5,
+    },
+    {
+      bottom: "28%",
+      left: "4%",
+      title: t("floatingCards.card3.title"),
+      sub: t("floatingCards.card3.sub"),
+      tag: t("floatingCards.card3.tag"),
+      gradient: "linear-gradient(135deg, #6e2e80, #c84d77)",
+      delay: 0.8,
+    },
+  ];
+  const statsData = [
+    { value: "1,200+", label: t("stats.eventsThisMonth") },
+    { value: "340+", label: t("stats.premiumVenues") },
+    { value: "98K+", label: t("stats.nightOwls") },
+  ];
 
   return (
     <div
@@ -177,7 +177,7 @@ export default function Hero() {
               <p className="text-xs text-white/40">{card.sub}</p>
               <div className="flex items-center gap-1 pt-1">
                 <Star className="w-3 h-3 fill-[#ea6390] text-[#ea6390]" />
-                <span className="text-xs text-white/50">Tonight</span>
+                <span className="text-xs text-white/50">{t("tonight")}</span>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-[#ea6390]/20 text-xs font-semibold text-[#ea6390] tracking-wider uppercase">
               <Zap className="w-3 h-3 fill-current" />
-              Premium Nightlife Experience
+              {t("badge")}
               <Zap className="w-3 h-3 fill-current" />
             </span>
           </motion.div>
@@ -210,13 +210,13 @@ export default function Hero() {
               className="text-5xl sm:text-7xl md:text-8xl lg:text-[105px] font-black leading-none tracking-tighter text-white"
               style={{ fontFamily: "var(--font-display, inherit)" }}
             >
-              YOUR NIGHT.
+              {t("titleFirst")}
             </h1>
             <h1
               className="text-5xl sm:text-7xl md:text-8xl lg:text-[105px] font-black leading-none tracking-tighter gradient-text"
               style={{ fontFamily: "var(--font-display, inherit)" }}
             >
-              YOUR RULES.
+              {t("titleSecond")}
             </h1>
           </motion.div>
 
@@ -225,8 +225,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-white/45 max-w-2xl mx-auto leading-relaxed"
           >
-            Discover the city&apos;s most exclusive events and premium venues.
-            From underground raves to rooftop sessions — every night is legendary.
+            {t("description")}
           </motion.p>
 
           {/* CTA buttons */}
@@ -242,7 +241,7 @@ export default function Hero() {
                 icon={<ArrowRight className="w-5 h-5" />}
                 iconPosition="right"
               >
-                Explore Events
+                {t("exploreEvents")}
               </Button>
             </Link>
             <Link href="/venues">
@@ -252,7 +251,7 @@ export default function Hero() {
                 icon={<Play className="w-4 h-4 fill-current" />}
                 iconPosition="left"
               >
-                Discover Venues
+                {t("discoverVenues")}
               </Button>
             </Link>
           </motion.div>
@@ -287,7 +286,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
       >
         <span className="text-xs text-white/25 tracking-widest uppercase">
-          Scroll to explore
+          {t("scroll")}
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}

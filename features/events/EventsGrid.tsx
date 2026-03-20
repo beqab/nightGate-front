@@ -3,13 +3,19 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar } from "lucide-react";
+import { useTranslations } from "next-intl";
 import EventCard from "@/components/cards/EventCard";
 import EventFilters from "./EventFilters";
 import { events, EventCategory } from "@/data/events";
 
 export default function EventsGrid() {
-  const [selectedCategory, setSelectedCategory] = useState<EventCategory | "All">("All");
-  const [selectedPrice, setSelectedPrice] = useState<"all" | "free" | "paid">("all");
+  const t = useTranslations("eventsGrid");
+  const [selectedCategory, setSelectedCategory] = useState<
+    EventCategory | "All"
+  >("All");
+  const [selectedPrice, setSelectedPrice] = useState<"all" | "free" | "paid">(
+    "all"
+  );
   const [sortBy, setSortBy] = useState<"date" | "price" | "popularity">("date");
 
   const filteredEvents = useMemo(() => {
@@ -64,8 +70,10 @@ export default function EventsGrid() {
             className="flex flex-col items-center justify-center py-24 text-center"
           >
             <Calendar className="w-12 h-12 text-white/15 mb-4" />
-            <h3 className="text-lg font-bold text-white/40 mb-2">No events found</h3>
-            <p className="text-sm text-white/25">Try adjusting your filters</p>
+            <h3 className="text-lg font-bold text-white/40 mb-2">
+              {t("emptyTitle")}
+            </h3>
+            <p className="text-sm text-white/25">{t("emptyDescription")}</p>
           </motion.div>
         ) : (
           <motion.div
@@ -77,7 +85,12 @@ export default function EventsGrid() {
             className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6"
           >
             {filteredEvents.map((event, i) => (
-              <EventCard key={event.id} event={event} variant="default" index={i} />
+              <EventCard
+                key={event.id}
+                event={event}
+                variant="default"
+                index={i}
+              />
             ))}
           </motion.div>
         )}

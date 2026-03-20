@@ -1,0 +1,305 @@
+{
+  "metadata": {
+    "siteTitle": "NightGate",
+    "siteDescription": "Discover premium nightlife events and standout venues with NightGate."
+  },
+  "language": {
+    "select": "Select language",
+    "enShort": "EN",
+    "kaShort": "KA"
+  },
+  "nav": {
+    "home": "Home",
+    "events": "Events",
+    "venues": "Venues",
+    "signIn": "Sign In",
+    "getTickets": "Get Tickets",
+    "toggleMenu": "Toggle menu"
+  },
+  "footer": {
+    "description": "Your premium pass to the city's best nightlife. Discover events, venues, and experiences that hit different.",
+    "groups": {
+      "explore": "Explore",
+      "company": "Company",
+      "legal": "Legal"
+    },
+    "links": {
+      "events": "Events",
+      "venues": "Venues",
+      "artists": "Artists",
+      "cities": "Cities",
+      "about": "About",
+      "careers": "Careers",
+      "press": "Press",
+      "blog": "Blog",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies"
+    },
+    "copyright": "© 2026 NightGate. All rights reserved.",
+    "tagline": "Built for the night. Designed for the experience."
+  },
+  "hero": {
+    "badge": "Premium Nightlife Experience",
+    "titleFirst": "YOUR NIGHT.",
+    "titleSecond": "YOUR RULES.",
+    "description": "Discover the city's most exclusive events and premium venues. From underground raves to rooftop sessions, every night is legendary.",
+    "exploreEvents": "Explore Events",
+    "discoverVenues": "Discover Venues",
+    "scroll": "Scroll to explore",
+    "tonight": "Tonight",
+    "stats": {
+      "eventsThisMonth": "Events this month",
+      "premiumVenues": "Premium venues",
+      "nightOwls": "Night owls"
+    },
+    "floatingCards": {
+      "card1": {
+        "title": "NEON CATHEDRAL",
+        "sub": "Fabric Underground",
+        "tag": "Techno"
+      },
+      "card2": {
+        "title": "PINK FREQUENCY",
+        "sub": "Rooftop 42",
+        "tag": "House"
+      },
+      "card3": {
+        "title": "BABYLON NIGHTS",
+        "sub": "The Grand",
+        "tag": "R&B / VIP"
+      }
+    }
+  },
+  "featuredEvents": {
+    "label": "Tonight & This Weekend",
+    "title": "Featured",
+    "titleHighlight": "Events",
+    "subtitle": "The most anticipated nights, handpicked for those who know how to live.",
+    "cta": "View all events"
+  },
+  "topVenues": {
+    "label": "Best In The City",
+    "title": "Top",
+    "titleHighlight": "Venues",
+    "subtitle": "Spaces with personality. These aren't just clubs, they're experiences.",
+    "cta": "Explore all venues"
+  },
+  "popularNow": {
+    "label": "Trending",
+    "title": "Popular",
+    "titleHighlight": "Now",
+    "subtitle": "What everyone's talking about this week.",
+    "hot": "Hot",
+    "full": "{percent}% full",
+    "attendingShort": "{count} attending"
+  },
+  "howItWorks": {
+    "label": "The NightGate Way",
+    "title": "How It",
+    "titleHighlight": "Works",
+    "subtitle": "Getting to the best night of your life takes exactly four steps.",
+    "steps": {
+      "discover": {
+        "title": "Discover",
+        "description": "Browse curated events and premium venues filtered by vibe, date, and city. No algorithm, just quality picks."
+      },
+      "book": {
+        "title": "Book",
+        "description": "Secure your ticket in seconds. VIP tables, guest list spots, or general admission, all in one tap."
+      },
+      "experience": {
+        "title": "Experience",
+        "description": "Show up, scan your pass, and lose yourself. We handle the logistics. You handle the memories."
+      },
+      "trust": {
+        "title": "Trust",
+        "description": "Every venue is verified. Every event is real. Your payment is protected with bank-grade security."
+      }
+    }
+  },
+  "ctaBanner": {
+    "eyebrow": "Don't miss out",
+    "titleBefore": "Your next",
+    "titleHighlight": "legendary night",
+    "titleAfter": "starts here.",
+    "description": "Join 98,000+ night owls who never miss a beat. Get early access, exclusive drops, and VIP alerts.",
+    "browseEvents": "Browse Events",
+    "exploreVenues": "Explore Venues"
+  },
+  "eventsPage": {
+    "metadata": {
+      "title": "Events",
+      "description": "Browse all events. Filter by category, price, and date."
+    },
+    "eyebrow": "All Events",
+    "title": "Discover",
+    "titleHighlight": "Tonight",
+    "description": "Every event, every vibe, every night. Filter and find exactly what you're looking for."
+  },
+  "venuesPage": {
+    "metadata": {
+      "title": "Venues",
+      "description": "Explore London's premium nightlife venues."
+    },
+    "eyebrow": "Venues",
+    "title": "Premium",
+    "titleHighlight": "Spaces",
+    "description": "Not just clubs, experiences. Rooftops, underground bunkers, velvet lounges, and everything in between."
+  },
+  "eventsGrid": {
+    "emptyTitle": "No events found",
+    "emptyDescription": "Try adjusting your filters"
+  },
+  "eventFilters": {
+    "found": "{count} events found",
+    "clear": "Clear filters",
+    "all": "All",
+    "price": "Price",
+    "prices": {
+      "all": "All Prices",
+      "free": "Free Entry",
+      "paid": "Paid"
+    },
+    "sort": {
+      "date": "By Date",
+      "price": "By Price",
+      "popularity": "Popularity"
+    }
+  },
+  "venuesGrid": {
+    "count": "{count} venues",
+    "sort": {
+      "rating": "Rating",
+      "capacity": "Capacity",
+      "name": "Name"
+    },
+    "allTypes": "All Types",
+    "activeFilter": "Active filter:",
+    "emptyTitle": "No venues found",
+    "emptyDescription": "Try a different type"
+  },
+  "eventCard": {
+    "attending": "{count} attending",
+    "full": "{percent}% full",
+    "soldOut": "Sold Out",
+    "getTickets": "Get Tickets",
+    "viewEvent": "View Event"
+  },
+  "venueCard": {
+    "until": "Until {time}",
+    "explore": "Explore Venue"
+  },
+  "events": {
+    "categories": {
+      "electronic": "Electronic",
+      "hipHop": "Hip-Hop",
+      "house": "House",
+      "techno": "Techno",
+      "rnb": "R&B",
+      "pop": "Pop",
+      "latin": "Latin",
+      "vip": "VIP"
+    },
+    "items": {
+      "evt-001": {
+        "title": "NEON CATHEDRAL",
+        "description": "An immersive audio-visual journey through dark techno landscapes. Six rooms, twelve artists, one cathedral of sound.",
+        "dj": "BLAWAN + Special Guests",
+        "priceLabel": "from €25"
+      },
+      "evt-002": {
+        "title": "PINK FREQUENCY",
+        "description": "Rooftop house music as the city glitters below. Deep, funky house cuts under an open sky.",
+        "dj": "Nina Kraviz",
+        "priceLabel": "€18"
+      },
+      "evt-003": {
+        "title": "BABYLON NIGHTS",
+        "description": "The most exclusive R&B night in the city. VIP tables, champagne service, and the hottest vibes.",
+        "dj": "DJ Khaled",
+        "priceLabel": "€35"
+      },
+      "evt-004": {
+        "title": "ULTRA VIOLET",
+        "description": "UV-lit warehouse rave with full LED production. Lose yourself in the ultraviolet frequency.",
+        "dj": "Charlotte de Witte",
+        "priceLabel": "€30"
+      },
+      "evt-005": {
+        "title": "VELVET LOUNGE",
+        "description": "Intimate velvet-draped lounge with curated pop sets, signature cocktails and a killer view.",
+        "dj": "Resident DJ Mira",
+        "priceLabel": "€15"
+      },
+      "evt-006": {
+        "title": "LATIN HEAT",
+        "description": "The hottest Latin night this side of the equator. Reggaeton, salsa, and merengue til sunrise.",
+        "dj": "J Balvin & Friends",
+        "priceLabel": "€20"
+      },
+      "evt-007": {
+        "title": "MIDNIGHT GOSPEL",
+        "description": "A spiritual experience. Minimal techno meets experimental sound design in this late-night sermon.",
+        "dj": "Aphex Twin",
+        "priceLabel": "€22"
+      },
+      "evt-008": {
+        "title": "DEEP SPACE",
+        "description": "Afro and deep house on the rooftop as the stars come out. Free entry before midnight.",
+        "dj": "Black Coffee",
+        "priceLabel": "Free"
+      },
+      "evt-009": {
+        "title": "HIP HOP SANCTUARY",
+        "description": "The ultimate hip-hop experience. From boom bap classics to current trap bangers.",
+        "dj": "A$AP Rocky",
+        "priceLabel": "€28"
+      }
+    }
+  },
+  "venues": {
+    "types": {
+      "nightclub": "Nightclub",
+      "rooftopBar": "Rooftop Bar",
+      "lounge": "Lounge",
+      "underground": "Underground",
+      "beachClub": "Beach Club",
+      "warehouse": "Warehouse"
+    },
+    "items": {
+      "ven-001": {
+        "name": "Fabric Underground",
+        "description": "Legendary multi-room underground club. Dark corridors, pounding sound systems, and iconic resident DJs make this a pilgrimage for clubbers worldwide."
+      },
+      "ven-002": {
+        "name": "Rooftop 42",
+        "description": "Perched on the 42nd floor with panoramic city views. Craft cocktails, deep house, and sunsets that hit different when you're above it all."
+      },
+      "ven-003": {
+        "name": "The Grand",
+        "description": "The city's most exclusive address. Gold-plated bathrooms, celebrity spotting, and a sound system that costs more than your car."
+      },
+      "ven-004": {
+        "name": "Arena Zero",
+        "description": "A converted industrial warehouse with Europe's largest indoor LED installation. Raw, massive, and absolutely relentless."
+      },
+      "ven-005": {
+        "name": "Club Noir",
+        "description": "Velvet walls, low lighting, and curated playlists. The kind of place where you whisper secrets and the music reads your mood."
+      },
+      "ven-006": {
+        "name": "Palacio",
+        "description": "A palace of Latin rhythms. Salsa classes start at 10pm, the reggaeton takes over at midnight, and the energy never drops."
+      },
+      "ven-007": {
+        "name": "Skyline Club",
+        "description": "Where the city's movers and shakers unwind above the financial district. Craft cocktails and ambient soundscapes."
+      },
+      "ven-008": {
+        "name": "VOID",
+        "description": "No phone policy. No frills. No mercy. VOID is for the true believers, those who come to lose themselves completely in the music."
+      }
+    }
+  }
+}

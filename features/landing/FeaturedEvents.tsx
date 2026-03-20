@@ -1,17 +1,20 @@
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import EventCard from "@/components/cards/EventCard";
 import { featuredEvents } from "@/data/events";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
-export default function FeaturedEvents() {
+export default async function FeaturedEvents() {
+  const t = await getTranslations("featuredEvents");
+
   return (
     <SectionWrapper
       id="events"
-      label="Tonight & This Weekend"
-      title="Featured"
-      titleHighlight="Events"
-      subtitle="The most anticipated nights, handpicked for those who know how to live."
+      label={t("label")}
+      title={t("title")}
+      titleHighlight={t("titleHighlight")}
+      subtitle={t("subtitle")}
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
         {featuredEvents.map((event, i) => (
@@ -24,7 +27,7 @@ export default function FeaturedEvents() {
           href="/events"
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#ea6390] hover:text-white border border-[#ea6390]/20 hover:border-[#ea6390]/60 px-6 py-3 rounded-xl hover:bg-[#ea6390]/10 transition-all duration-300"
         >
-          View all events
+          {t("cta")}
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

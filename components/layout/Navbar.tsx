@@ -1,34 +1,30 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/events", label: "Events" },
-  { href: "/venues", label: "Venues" },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("nav");
+  const navLinks = [
+    { href: "/", label: t("home") },
+    { href: "/events", label: t("events") },
+    { href: "/venues", label: t("venues") },
+  ] as const;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
 
   return (
     <>
@@ -90,11 +86,12 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
+              <LanguageSwitcher />
               <Button variant="ghost" size="sm">
-                Sign In
+                {t("signIn")}
               </Button>
               <Button variant="primary" size="sm" glow>
-                Get Tickets
+                {t("getTickets")}
               </Button>
             </div>
 
@@ -102,7 +99,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen((v) => !v)}
               className="md:hidden p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors"
-              aria-label="Toggle menu"
+              aria-label={t("toggleMenu")}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -121,12 +118,14 @@ export default function Navbar() {
             className="fixed inset-x-0 top-16 z-40 bg-[#080514]/95 backdrop-blur-2xl border-b border-white/5 md:hidden"
           >
             <div className="px-4 py-6 flex flex-col gap-2">
+              <LanguageSwitcher className="mb-2 w-fit" />
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => setMobileOpen(false)}
                     className={cn(
                       "px-4 py-3 rounded-xl text-base font-medium transition-all",
                       isActive
@@ -140,10 +139,10 @@ export default function Navbar() {
               })}
               <div className="mt-4 pt-4 border-t border-white/5 flex flex-col gap-3">
                 <Button variant="ghost" size="md" className="w-full justify-center">
-                  Sign In
+                  {t("signIn")}
                 </Button>
                 <Button variant="primary" size="md" className="w-full justify-center" glow>
-                  Get Tickets
+                  {t("getTickets")}
                 </Button>
               </div>
             </div>

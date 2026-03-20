@@ -2,24 +2,30 @@
 
 import { motion } from "framer-motion";
 import { TrendingUp, Users, Clock } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { events } from "@/data/events";
-import { formatDate, getAttendancePercent } from "@/lib/utils";
+import { getEventCategoryLabel, getEventCopy } from "@/lib/localized-content";
+import { formatDate, formatNumber, getAttendancePercent } from "@/lib/utils";
 
 const trendingEvents = events.slice(3, 7);
 
 export default function PopularNow() {
+  const locale = useLocale();
+  const t = useTranslations();
+
   return (
     <SectionWrapper
       id="popular"
-      label="Trending"
-      title="Popular"
-      titleHighlight="Now"
-      subtitle="What everyone's talking about this week."
+      label={t("popularNow.label")}
+      title={t("popularNow.title")}
+      titleHighlight={t("popularNow.titleHighlight")}
+      subtitle={t("popularNow.subtitle")}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {trendingEvents.map((event, i) => {
           const pct = getAttendancePercent(event.attendees, event.capacity);
+          const copy = getEventCopy(t, event);
           return (
             <motion.div
               key={event.id}
@@ -49,27 +55,27 @@ export default function PopularNow() {
               <div className="flex-1 min-w-0 space-y-1">
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-0.5 text-xs rounded-full bg-[#ea6390]/10 border border-[#ea6390]/20 text-[#ea6390]">
-                    {event.category}
+                    {getEventCategoryLabel(t, event.category)}
                   </span>
                   {pct > 75 && (
                     <span className="flex items-center gap-1 text-xs text-amber-400">
                       <TrendingUp className="w-3 h-3" />
-                      Hot
+                      {t("popularNow.hot")}
                     </span>
                   )}
                 </div>
                 <h4 className="text-sm font-bold text-white truncate group-hover:text-[#ea6390] transition-colors">
-                  {event.title}
+                  {copy.title}
                 </h4>
                 <p className="text-xs text-white/40 truncate">{event.venue}</p>
                 <div className="flex items-center gap-3 text-xs text-white/35">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
-                    {formatDate(event.date)}
+                    {formatDate(event.date, locale)}
                   </span>
                   <span className="flex items-center gap-1">
                     <Users className="w-3 h-3" />
-                    {event.attendees.toLocaleString()}
+                    {formatNumber(event.attendees, locale)}
                   </span>
                 </div>
               </div>
@@ -79,7 +85,7 @@ export default function PopularNow() {
                 <span className={`text-sm font-bold ${
                   event.price === 0 ? "text-emerald-400" : "text-[#ea6390]"
                 }`}>
-                  {event.priceLabel}
+                  {copy.priceLabel}
                 </span>
                 <div className="text-right">
                   <div className="w-16 h-1 rounded-full bg-white/10 overflow-hidden">
@@ -88,7 +94,9 @@ export default function PopularNow() {
                       style={{ width: `${Math.min(pct, 100)}%` }}
                     />
                   </div>
-                  <span className="text-xs text-white/30 mt-0.5 block">{pct}% full</span>
+                  <span className="text-xs text-white/30 mt-0.5 block">
+                    {t("popularNow.full", { percent: pct })}
+                  </span>
                 </div>
               </div>
             </motion.div>

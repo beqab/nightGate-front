@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Calendar, Clock, MapPin, Users, Ticket } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Event } from "@/data/events";
-import { formatDate, getAttendancePercent } from "@/lib/utils";
+import { getEventCategoryLabel, getEventCopy } from "@/lib/localized-content";
+import { formatDate, formatNumber, getAttendancePercent } from "@/lib/utils";
 
 interface EventCardProps {
   event: Event;
@@ -25,9 +26,16 @@ const cardVariants = {
   }),
 };
 
-export default function EventCard({ event, variant = "default", index = 0 }: EventCardProps) {
+export default function EventCard({
+  event,
+  variant = "default",
+  index = 0,
+}: EventCardProps) {
+  const locale = useLocale();
+  const t = useTranslations();
   const attendancePct = getAttendancePercent(event.attendees, event.capacity);
   const isSoldOut = attendancePct >= 100;
+  const copy = getEventCopy(t, event);
 
   if (variant === "featured") {
     return (
@@ -48,7 +56,8 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
         />
 
         {/* Noise overlay */}
-        <div className="absolute inset-0 opacity-20"
+        <div
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
           }}
@@ -65,33 +74,37 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
           <div className="flex items-start justify-between">
             {/* Category badge */}
             <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-black/40 backdrop-blur-md border border-white/10 text-white">
-              {event.category}
+              {getEventCategoryLabel(t, event.category)}
             </span>
             {/* Price */}
-            <span className={`px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-md border ${
-              event.price === 0
-                ? "bg-emerald-500/20 border-emerald-500/30 text-emerald-400"
-                : "bg-[#ea6390]/20 border-[#ea6390]/30 text-[#ea6390]"
-            }`}>
-              {event.priceLabel}
+            <span
+              className={`px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-md border ${
+                event.price === 0
+                  ? "bg-emerald-500/20 border-emerald-500/30 text-emerald-400"
+                  : "bg-[#ea6390]/20 border-[#ea6390]/30 text-[#ea6390]"
+              }`}
+            >
+              {copy.priceLabel}
             </span>
           </div>
 
           <div className="space-y-4">
             {event.dj && (
               <p className="text-xs font-semibold tracking-widest uppercase text-[#ea6390]/80">
-                {event.dj}
+                {copy.dj}
               </p>
             )}
             <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight tracking-tight">
-              {event.title}
+              {copy.title}
             </h3>
-            <p className="text-sm text-white/60 line-clamp-2">{event.description}</p>
+            <p className="text-sm text-white/60 line-clamp-2">
+              {copy.description}
+            </p>
 
             <div className="flex flex-wrap gap-3 text-xs text-white/50">
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-[#ea6390]" />
-                {formatDate(event.date)}
+                {formatDate(event.date, locale)}
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-[#ea6390]" />
@@ -108,9 +121,11 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
               <div className="flex justify-between text-xs text-white/40">
                 <span className="flex items-center gap-1">
                   <Users className="w-3 h-3" />
-                  {event.attendees.toLocaleString()} attending
+                  {t("eventCard.attending", {
+                    count: formatNumber(event.attendees, locale),
+                  })}
                 </span>
-                <span>{attendancePct}% full</span>
+                <span>{t("eventCard.full", { percent: attendancePct })}</span>
               </div>
               <div className="h-1 w-full rounded-full bg-white/10 overflow-hidden">
                 <motion.div
@@ -137,7 +152,7 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
               disabled={isSoldOut}
             >
               <Ticket className="w-4 h-4" />
-              {isSoldOut ? "Sold Out" : "Get Tickets"}
+              {isSoldOut ? t("eventCard.soldOut") : t("eventCard.getTickets")}
             </motion.button>
           </div>
         </div>
@@ -167,14 +182,17 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
         {/* Tags */}
         <div className="absolute bottom-3 left-3 flex gap-2 flex-wrap">
           {event.tags.slice(0, 2).map((tag) => (
-            <span key={tag} className="px-2 py-0.5 text-xs rounded-full bg-black/50 backdrop-blur-sm text-white/70 border border-white/10">
+            <span
+              key={tag}
+              className="px-2 py-0.5 text-xs rounded-full bg-black/50 backdrop-blur-sm text-white/70 border border-white/10"
+            >
               {tag}
             </span>
           ))}
         </div>
         {/* Category */}
         <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold rounded-full bg-black/50 backdrop-blur-sm border border-[#ea6390]/20 text-[#ea6390]">
-          {event.category}
+          {getEventCategoryLabel(t, event.category)}
         </span>
       </div>
 
@@ -182,17 +200,17 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
       <div className="p-5 space-y-3">
         {event.dj && (
           <p className="text-xs font-semibold tracking-wider uppercase text-[#ea6390]/70">
-            {event.dj}
+            {copy.dj}
           </p>
         )}
         <h3 className="text-lg font-bold text-white leading-snug group-hover:text-[#ea6390] transition-colors duration-200">
-          {event.title}
+          {copy.title}
         </h3>
 
         <div className="flex flex-col gap-1.5 text-xs text-white/45">
           <span className="flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5 text-[#9e4280]" />
-            {formatDate(event.date)} · {event.time}
+            {formatDate(event.date, locale)} · {event.time}
           </span>
           <span className="flex items-center gap-1.5">
             <MapPin className="w-3.5 h-3.5 text-[#9e4280]" />
@@ -201,14 +219,16 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
         </div>
 
         <div className="flex items-center justify-between pt-1">
-          <span className={`text-sm font-bold ${
-            event.price === 0 ? "text-emerald-400" : "text-[#ea6390]"
-          }`}>
-            {event.priceLabel}
+          <span
+            className={`text-sm font-bold ${
+              event.price === 0 ? "text-emerald-400" : "text-[#ea6390]"
+            }`}
+          >
+            {copy.priceLabel}
           </span>
           <span className="flex items-center gap-1 text-xs text-white/40">
             <Users className="w-3 h-3" />
-            {event.attendees.toLocaleString()}
+            {formatNumber(event.attendees, locale)}
           </span>
         </div>
 
@@ -218,7 +238,7 @@ export default function EventCard({ event, variant = "default", index = 0 }: Eve
           className="w-full py-2.5 rounded-xl text-xs font-semibold bg-[#ea6390]/10 border border-[#ea6390]/20 text-[#ea6390] hover:bg-[#ea6390]/20 hover:border-[#ea6390]/40 hover:shadow-[0_0_16px_rgba(234,99,144,0.2)] transition-all duration-200 flex items-center justify-center gap-1.5"
         >
           <Ticket className="w-3.5 h-3.5" />
-          {isSoldOut ? "Sold Out" : "View Event"}
+          {isSoldOut ? t("eventCard.soldOut") : t("eventCard.viewEvent")}
         </motion.button>
       </div>
     </motion.div>

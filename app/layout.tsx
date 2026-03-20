@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,9 +19,8 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "NightGate — Your Premium Nightlife Experience",
-  description:
-    "Discover the city's most exclusive events and premium venues. From underground raves to rooftop sessions — every night is legendary.",
+  title: "NightGate",
+  description: "Discover premium nightlife events and standout venues with NightGate.",
   keywords: ["nightlife", "events", "clubs", "venues", "tickets"],
 };
 
@@ -35,12 +32,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#080514] text-white">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
