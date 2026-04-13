@@ -17,7 +17,6 @@ import { Event } from "@/data/events";
 import { Venue } from "@/data/venues";
 import { formatDate, getAttendancePercent } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
-import GlowOrb from "@/components/ui/GlowOrb";
 import InfoRow from "@/components/ui/InfoRow";
 import StickyTicketCard from "@/features/events/StickyTicketCard";
 import LineupList, { LineupArtist } from "@/features/events/LineupList";
@@ -301,7 +300,7 @@ export default function EventDetailView({
                 duration: 0.85,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="text-[clamp(3.5rem,12vw,9.5rem)] font-black leading-[0.92] tracking-tighter text-white font-display"
+              className="text-[clamp(3.5rem,10vw,6.5rem)] font-black leading-[0.92] tracking-tighter text-white font-display"
             >
               {event.title}
             </motion.h1>
@@ -336,11 +335,7 @@ export default function EventDetailView({
               transition={{ delay: 0.9, duration: 0.7 }}
               className="flex justify-center"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-10 py-4 rounded-2xl bg-gradient-to-r from-[#ea6390] to-[#9e4280] text-white font-bold text-base flex items-center gap-3 shadow-[0_0_50px_rgba(234,99,144,0.5),0_0_100px_rgba(234,99,144,0.2)] hover:shadow-[0_0_80px_rgba(234,99,144,0.65),0_0_140px_rgba(234,99,144,0.3)] transition-shadow duration-300"
-              >
+              <motion.button className="px-10 py-4 rounded-2xl bg-gradient-to-r from-[#ea6390] to-[#9e4280] text-white font-bold text-base flex items-center gap-3 shadow-[0_0_50px_rgba(234,99,144,0.5),0_0_100px_rgba(234,99,144,0.2)] hover:shadow-[0_0_80px_rgba(234,99,144,0.65),0_0_140px_rgba(234,99,144,0.3)] hover:scale-[1.03] active:scale-[0.97] transition-[transform,box-shadow] duration-150 ease-out">
                 <Ticket className="w-5 h-5" />
                 Get Tickets
               </motion.button>
@@ -389,14 +384,13 @@ export default function EventDetailView({
                 {/* Tags */}
                 <div className="mt-6 flex flex-wrap gap-2">
                   {event.tags.map((tag) => (
-                    <motion.span
+                    <span
                       key={tag}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold glass neon-border text-white/60 hover:text-[#ea6390] hover:border-[#ea6390]/40 transition-colors duration-200 cursor-default"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold glass neon-border text-white/60 hover:text-[#ea6390] hover:border-[#ea6390]/40 hover:-translate-y-0.5 hover:scale-[1.05] transition-[transform,color,border-color] duration-150 ease-out cursor-default"
                     >
                       <Tag className="w-3 h-3" />
                       {tag}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
 
@@ -414,13 +408,9 @@ export default function EventDetailView({
                       value: event.price === 0 ? "Free" : `€${event.price}`,
                     },
                   ].map((stat) => (
-                    <motion.div
+                    <div
                       key={stat.label}
-                      whileHover={{
-                        y: -3,
-                        borderColor: "rgba(234,99,144,0.4)",
-                      }}
-                      className="glass neon-border rounded-2xl p-4 text-center transition-all duration-300 hover:bg-[#ea6390]/5"
+                      className="glass neon-border rounded-2xl p-4 text-center hover:-translate-y-1 hover:border-[#ea6390]/40 hover:bg-[#ea6390]/5 transition-[transform,border-color,background] duration-150 ease-out"
                     >
                       <p className="text-xl font-black text-white font-display">
                         {stat.value}
@@ -428,7 +418,7 @@ export default function EventDetailView({
                       <p className="text-[10px] uppercase tracking-[0.15em] text-white/30 mt-0.5">
                         {stat.label}
                       </p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </motion.section>
@@ -477,10 +467,7 @@ export default function EventDetailView({
                     viewport={{ once: true, margin: "-60px" }}
                   >
                     <SectionLabel>The Venue</SectionLabel>
-                    <motion.div
-                      whileHover={{ borderColor: "rgba(234,99,144,0.4)" }}
-                      className="mt-5 glass neon-border rounded-2xl p-6 flex gap-5 items-start transition-all duration-300 hover:bg-[#ea6390]/4"
-                    >
+                    <div className="mt-5 glass neon-border rounded-2xl p-6 flex gap-5 items-start hover:border-[#ea6390]/40 hover:bg-[#ea6390]/4 transition-[border-color,background] duration-150">
                       {/* Venue color dot */}
                       <div
                         className="w-12 h-12 rounded-2xl flex-shrink-0 border border-white/10"
@@ -519,7 +506,7 @@ export default function EventDetailView({
                           View venue →
                         </Link>
                       </div>
-                    </motion.div>
+                    </div>
                   </motion.section>
                 </>
               )}

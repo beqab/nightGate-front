@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import VenuesGrid from "@/features/venues/VenuesGrid";
-import GlowOrb from "@/components/ui/GlowOrb";
 
 export async function generateMetadata({
   params,
@@ -22,7 +21,7 @@ export default async function VenuesPage() {
 
   return (
     <div className="relative min-h-screen pt-24">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <GlowOrb
           size={600}
           color="#9e4280"
@@ -37,7 +36,7 @@ export default async function VenuesPage() {
           className="top-1/3 -left-40"
           animate={false}
         />
-      </div>
+      </div> */}
 
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-10 space-y-3">
@@ -47,7 +46,8 @@ export default async function VenuesPage() {
             <span className="h-px w-6 bg-[#ea6390]" />
           </span>
           <h1 className="text-4xl font-black leading-tight text-white md:text-5xl">
-            {t("title")} <span className="gradient-text">{t("titleHighlight")}</span>
+            {t("title")}{" "}
+            <span className="gradient-text">{t("titleHighlight")}</span>
           </h1>
           <p className="max-w-xl text-white/45">{t("description")}</p>
         </div>

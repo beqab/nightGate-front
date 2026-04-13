@@ -75,7 +75,11 @@ export default function HowItWorks() {
               whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
               whileHover={{ y: -6 }}
-              transition={{ type: "tween", duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                type: "tween",
+                duration: 0.15,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               className="relative group glass neon-border rounded-2xl p-6 text-center hover:border-[#ea6390]/40 transition-[background,box-shadow,border-color,opacity] duration-300"
               style={{
                 boxShadow: `0 0 0 1px transparent`,

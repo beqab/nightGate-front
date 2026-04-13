@@ -17,7 +17,7 @@ interface LineupListProps {
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.05, delayChildren: 0 },
   },
 };
 
@@ -44,9 +44,7 @@ export default function LineupList({ artists }: LineupListProps) {
         <motion.div
           key={artist.name}
           variants={itemVariants}
-          whileHover={{ x: 6 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className={`group relative glass rounded-2xl px-5 py-4 flex items-center gap-4 cursor-default transition-all duration-300 ${
+          className={`group relative glass rounded-2xl px-5 py-4 flex items-center gap-4 cursor-default hover:translate-x-1.5 transition-[transform,background,border-color] duration-150 ease-out ${
             artist.isHeadliner
               ? "border border-[#ea6390]/35 hover:border-[#ea6390]/60 hover:bg-[#ea6390]/5 shadow-[0_0_30px_rgba(234,99,144,0.06)]"
               : "neon-border hover:border-[#ea6390]/30 hover:bg-white/[0.04]"
@@ -54,7 +52,7 @@ export default function LineupList({ artists }: LineupListProps) {
         >
           {/* Left accent bar */}
           <div
-            className={`absolute left-0 top-1/2 -translate-y-1/2 w-0.5 rounded-full transition-all duration-300 ${
+            className={`absolute left-0 top-1/2 -translate-y-1/2 w-0.5 rounded-full transition-[height] duration-150 ${
               artist.isHeadliner ? "h-10 bg-[#ea6390]" : "h-0 group-hover:h-6 bg-[#ea6390]/60"
             }`}
           />
@@ -72,7 +70,7 @@ export default function LineupList({ artists }: LineupListProps) {
 
           {/* Icon */}
           <div
-            className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+            className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-[background,border-color,color] duration-150 ${
               artist.isHeadliner
                 ? "bg-[#ea6390]/20 border border-[#ea6390]/40 text-[#ea6390]"
                 : "bg-white/5 border border-white/8 text-white/40 group-hover:bg-[#ea6390]/10 group-hover:border-[#ea6390]/25 group-hover:text-[#ea6390]"

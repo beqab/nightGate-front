@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Play, Star, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
-import GlowOrb from "@/components/ui/GlowOrb";
 import { Link } from "@/i18n/navigation";
 
 const containerVariants = {

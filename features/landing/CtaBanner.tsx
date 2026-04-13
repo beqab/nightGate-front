@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
-import GlowOrb from "@/components/ui/GlowOrb";
 import { Link as LocaleLink } from "@/i18n/navigation";
 
 export default function CtaBanner() {
@@ -14,27 +13,6 @@ export default function CtaBanner() {
     <section className="relative overflow-hidden section-padding">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#3f1b70]/40 via-[#1a0a3d] to-[#080514]" />
-      <GlowOrb
-        size={500}
-        color="#ea6390"
-        opacity={0.1}
-        className="top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        animate={false}
-      />
-      <GlowOrb
-        size={300}
-        color="#9e4280"
-        opacity={0.12}
-        className="-bottom-20 left-10"
-        animate={false}
-      />
-      <GlowOrb
-        size={300}
-        color="#6e2e80"
-        opacity={0.12}
-        className="-bottom-20 right-10"
-        animate={false}
-      />
 
       {/* Border glow */}
       <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#ea6390]/50 to-transparent" />

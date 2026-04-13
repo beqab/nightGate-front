@@ -22,7 +22,6 @@ import {
 import { Venue } from "@/data/venues";
 import { Event } from "@/data/events";
 import { Link } from "@/i18n/navigation";
-import GlowOrb from "@/components/ui/GlowOrb";
 import InfoRow from "@/components/ui/InfoRow";
 import GalleryGrid, { GalleryItem } from "@/features/shared/GalleryGrid";
 import EventCard from "@/components/cards/EventCard";
@@ -206,7 +205,7 @@ export default function VenueDetailView({
                 duration: 0.85,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.9] tracking-tighter text-white font-display"
+              className="text-[clamp(2rem,7vw,4.5rem)]  md:text-[clamp(3rem,10vw,5.5rem)] font-black leading-[0.9] tracking-tighter text-white font-display"
             >
               {venue.name}
             </motion.h1>
@@ -275,21 +274,6 @@ export default function VenueDetailView({
 
       {/* ── MAIN CONTENT ─────────────────────────────────────────────── */}
       <div className="relative bg-[#080514]">
-        <GlowOrb
-          size={600}
-          color="#ea6390"
-          opacity={0.04}
-          className="top-0 left-1/4"
-          animate={false}
-        />
-        <GlowOrb
-          size={500}
-          color="#9e4280"
-          opacity={0.04}
-          className="top-2/3 -right-40"
-          animate={false}
-        />
-
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 space-y-20">
           {/* ── ABOUT + QUICK STATS ──────────────────────────────────── */}
           <motion.section
