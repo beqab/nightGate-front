@@ -18,13 +18,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-gradient-to-r from-[#ea6390] to-[#9e4280] text-white font-semibold hover:from-[#c84d77] hover:to-[#7d3568] shadow-[0_4px_24px_rgba(234,99,144,0.4)] hover:shadow-[0_4px_40px_rgba(234,99,144,0.6)] transition-all duration-300",
+    "bg-gradient-to-r from-[#ea6390] to-[#9e4280] text-white font-semibold hover:from-[#c84d77] hover:to-[#7d3568] shadow-[0_4px_24px_rgba(234,99,144,0.4)] hover:shadow-[0_4px_40px_rgba(234,99,144,0.6)] transition-[background,box-shadow,color,border-color] duration-200",
   secondary:
-    "bg-gradient-to-r from-[#9e4280] to-[#6e2e80] text-white font-semibold hover:from-[#7d3568] hover:to-[#5a2568] shadow-[0_4px_24px_rgba(158,66,128,0.4)] hover:shadow-[0_4px_40px_rgba(158,66,128,0.6)] transition-all duration-300",
+    "bg-gradient-to-r from-[#9e4280] to-[#6e2e80] text-white font-semibold hover:from-[#7d3568] hover:to-[#5a2568] shadow-[0_4px_24px_rgba(158,66,128,0.4)] hover:shadow-[0_4px_40px_rgba(158,66,128,0.6)] transition-[background,box-shadow,color,border-color] duration-200",
   ghost:
-    "bg-transparent text-white/80 hover:text-white border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all duration-200",
+    "bg-transparent text-white/80 hover:text-white border border-white/10 hover:border-white/30 hover:bg-white/5 transition-[background,box-shadow,color,border-color] duration-100",
   outline:
-    "bg-transparent text-[#ea6390] border border-[#ea6390]/40 hover:border-[#ea6390] hover:bg-[#ea6390]/10 hover:shadow-[0_0_20px_rgba(234,99,144,0.3)] transition-all duration-300",
+    "bg-transparent text-[#ea6390] border border-[#ea6390]/40 hover:border-[#ea6390] hover:bg-[#ea6390]/10 hover:shadow-[0_0_20px_rgba(234,99,144,0.3)] transition-[background,box-shadow,color,border-color] duration-200",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

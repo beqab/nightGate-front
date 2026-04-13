@@ -32,9 +32,14 @@ export default function PopularNow() {
               initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: i * 0.1 }}
               whileHover={{ scale: 1.01, y: -2 }}
-              className="group flex gap-4 glass neon-border rounded-2xl p-4 cursor-pointer hover:border-[#ea6390]/40 transition-all duration-300"
+              transition={{
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+                scale: { type: "tween", duration: 0.15, ease: [0.25, 0.1, 0.25, 1] },
+                y: { type: "tween", duration: 0.15, ease: [0.25, 0.1, 0.25, 1] },
+              }}
+              className="group flex gap-4 glass neon-border rounded-2xl p-4 cursor-pointer hover:border-[#ea6390]/40 transition-[background,box-shadow,border-color,opacity] duration-300"
             >
               {/* Rank */}
               <div className="shrink-0 flex items-center justify-center w-10">
@@ -82,9 +87,11 @@ export default function PopularNow() {
 
               {/* Price */}
               <div className="shrink-0 flex flex-col items-end justify-between">
-                <span className={`text-sm font-bold ${
-                  event.price === 0 ? "text-emerald-400" : "text-[#ea6390]"
-                }`}>
+                <span
+                  className={`text-sm font-bold ${
+                    event.price === 0 ? "text-emerald-400" : "text-[#ea6390]"
+                  }`}
+                >
                   {copy.priceLabel}
                 </span>
                 <div className="text-right">

@@ -21,7 +21,10 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    transition: {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
   },
 };
 
@@ -87,7 +90,7 @@ export default function Hero() {
       />
 
       {/* Glow orbs */}
-      <GlowOrb
+      {/* <GlowOrb
         size={700}
         color="#ea6390"
         opacity={0.12}
@@ -114,8 +117,7 @@ export default function Hero() {
         opacity={0.18}
         className="bottom-0 left-1/4"
         delay={3}
-        animate={false}
-      />
+      /> */}
 
       {/* Subtle grid */}
       <div
@@ -131,7 +133,12 @@ export default function Hero() {
       <motion.div
         initial={{ top: "-2px" }}
         animate={{ top: "100%" }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear", repeatDelay: 4 }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+          repeatDelay: 4,
+        }}
         className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ea6390]/30 to-transparent pointer-events-none z-10"
       />
 
@@ -139,21 +146,12 @@ export default function Hero() {
       {floatingCards.map((card, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{
-            opacity: [0, 1, 1],
-            scale: [0.85, 1, 1],
-            y: [0, -10, 0],
-          }}
+          initial={{ opacity: 0, scale: 0.88 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{
-            opacity: { duration: 0.8, delay: 0.6 + card.delay },
-            scale: { duration: 0.8, delay: 0.6 + card.delay },
-            y: {
-              duration: 5 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: card.delay,
-            },
+            duration: 0.6,
+            delay: 0.5 + card.delay,
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="absolute hidden lg:block z-20"
           style={{
@@ -164,23 +162,35 @@ export default function Hero() {
             width: 200,
           }}
         >
-          <div className="glass-strong rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.6)] border border-white/10">
-            <div
-              className="h-20 w-full"
-              style={{ background: card.gradient }}
-            />
-            <div className="p-3 space-y-1">
-              <span className="text-xs font-bold text-[#ea6390] tracking-wider">
-                {card.tag}
-              </span>
-              <p className="text-xs font-bold text-white leading-tight">{card.title}</p>
-              <p className="text-xs text-white/40">{card.sub}</p>
-              <div className="flex items-center gap-1 pt-1">
-                <Star className="w-3 h-3 fill-[#ea6390] text-[#ea6390]" />
-                <span className="text-xs text-white/50">{t("tonight")}</span>
+          <motion.div
+            animate={{ y: [-7, 7, -7] }}
+            transition={{
+              duration: 4 + i * 0.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5 + card.delay,
+            }}
+          >
+            <div className="glass-strong rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.6)] border border-white/10">
+              <div
+                className="h-20 w-full"
+                style={{ background: card.gradient }}
+              />
+              <div className="p-3 space-y-1">
+                <span className="text-xs font-bold text-[#ea6390] tracking-wider">
+                  {card.tag}
+                </span>
+                <p className="text-xs font-bold text-white leading-tight">
+                  {card.title}
+                </p>
+                <p className="text-xs text-white/40">{card.sub}</p>
+                <div className="flex items-center gap-1 pt-1">
+                  <Star className="w-3 h-3 fill-[#ea6390] text-[#ea6390]" />
+                  <span className="text-xs text-white/50">{t("tonight")}</span>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       ))}
 
@@ -275,25 +285,6 @@ export default function Hero() {
               </div>
             ))}
           </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* ── Scroll indicator ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-white/25 tracking-widest uppercase">
-          {t("scroll")}
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center p-1"
-        >
-          <div className="w-1 h-2 rounded-full bg-[#ea6390]/60" />
         </motion.div>
       </motion.div>
     </div>

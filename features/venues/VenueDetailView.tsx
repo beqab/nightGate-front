@@ -1,7 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import {
   MapPin,
   Users,
@@ -61,7 +66,10 @@ const sectionVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
   },
 };
 
@@ -121,7 +129,10 @@ export default function VenueDetailView({
           style={{ y: bgY, scale: bgScale }}
           className="absolute inset-0 origin-center"
         >
-          <div className="absolute inset-0" style={{ background: venue.gradient }} />
+          <div
+            className="absolute inset-0"
+            style={{ background: venue.gradient }}
+          />
           {/* Film grain */}
           <div
             className="absolute inset-0 opacity-[0.2] mix-blend-overlay"
@@ -190,7 +201,11 @@ export default function VenueDetailView({
             <motion.h1
               initial={{ opacity: 0, y: 36 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                delay: 0.5,
+                duration: 0.85,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="text-[clamp(3rem,11vw,8.5rem)] font-black leading-[0.9] tracking-tighter text-white font-display"
             >
               {venue.name}
@@ -204,7 +219,9 @@ export default function VenueDetailView({
               className="flex items-center justify-center gap-3"
             >
               <StarRating rating={venue.rating} />
-              <span className="text-white font-bold text-base">{venue.rating}</span>
+              <span className="text-white font-bold text-base">
+                {venue.rating}
+              </span>
               <span className="text-white/35 text-sm">
                 ({venue.reviews.toLocaleString()} reviews)
               </span>
@@ -258,11 +275,22 @@ export default function VenueDetailView({
 
       {/* ── MAIN CONTENT ─────────────────────────────────────────────── */}
       <div className="relative bg-[#080514]">
-        <GlowOrb size={600} color="#ea6390" opacity={0.04} className="top-0 left-1/4" animate={false} />
-        <GlowOrb size={500} color="#9e4280" opacity={0.04} className="top-2/3 -right-40" animate={false} />
+        <GlowOrb
+          size={600}
+          color="#ea6390"
+          opacity={0.04}
+          className="top-0 left-1/4"
+          animate={false}
+        />
+        <GlowOrb
+          size={500}
+          color="#9e4280"
+          opacity={0.04}
+          className="top-2/3 -right-40"
+          animate={false}
+        />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 space-y-20">
-
           {/* ── ABOUT + QUICK STATS ──────────────────────────────────── */}
           <motion.section
             variants={sectionVariants}
@@ -302,12 +330,39 @@ export default function VenueDetailView({
                   Venue Info
                 </p>
                 <div className="divide-y divide-white/[0.05]">
-                  <InfoRow icon={<Star className="w-4 h-4" />} label="Rating" value={`${venue.rating} / 5.0 · ${venue.reviews.toLocaleString()} reviews`} highlight />
-                  <InfoRow icon={<MapPin className="w-4 h-4" />} label="Location" value={`${venue.neighborhood}, ${venue.city}`} />
-                  <InfoRow icon={<Users className="w-4 h-4" />} label="Capacity" value={`${venue.capacity.toLocaleString()} people`} />
-                  <InfoRow icon={<Clock className="w-4 h-4" />} label="Open until" value={venue.openTil} />
-                  <InfoRow icon={<Shield className="w-4 h-4" />} label="Dress code" value={venue.dressCode} />
-                  <InfoRow icon={<Users className="w-4 h-4" />} label="Minimum age" value={`${venue.minAge}+`} />
+                  <InfoRow
+                    icon={<Star className="w-4 h-4" />}
+                    label="Rating"
+                    value={`${
+                      venue.rating
+                    } / 5.0 · ${venue.reviews.toLocaleString()} reviews`}
+                    highlight
+                  />
+                  <InfoRow
+                    icon={<MapPin className="w-4 h-4" />}
+                    label="Location"
+                    value={`${venue.neighborhood}, ${venue.city}`}
+                  />
+                  <InfoRow
+                    icon={<Users className="w-4 h-4" />}
+                    label="Capacity"
+                    value={`${venue.capacity.toLocaleString()} people`}
+                  />
+                  <InfoRow
+                    icon={<Clock className="w-4 h-4" />}
+                    label="Open until"
+                    value={venue.openTil}
+                  />
+                  <InfoRow
+                    icon={<Shield className="w-4 h-4" />}
+                    label="Dress code"
+                    value={venue.dressCode}
+                  />
+                  <InfoRow
+                    icon={<Users className="w-4 h-4" />}
+                    label="Minimum age"
+                    value={`${venue.minAge}+`}
+                  />
                 </div>
               </motion.div>
             </div>
@@ -324,7 +379,9 @@ export default function VenueDetailView({
             viewport={{ once: true, margin: "-60px" }}
           >
             <SectionLabel>Gallery</SectionLabel>
-            <p className="mt-2 mb-6 text-sm text-white/30">Step inside before you arrive</p>
+            <p className="mt-2 mb-6 text-sm text-white/30">
+              Step inside before you arrive
+            </p>
             <GalleryGrid items={gallery} />
           </motion.section>
 
@@ -358,7 +415,12 @@ export default function VenueDetailView({
                   className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6"
                 >
                   {upcomingEvents.map((event, index) => (
-                    <EventCard key={event.id} event={event} variant="default" index={index} />
+                    <EventCard
+                      key={event.id}
+                      event={event}
+                      variant="default"
+                      index={index}
+                    />
                   ))}
                 </motion.div>
               ) : (
@@ -369,7 +431,9 @@ export default function VenueDetailView({
                   className="glass neon-border rounded-2xl py-16 flex flex-col items-center gap-4 text-center"
                 >
                   <CalendarDays className="w-8 h-8 text-white/20" />
-                  <p className="text-sm text-white/30">No upcoming events scheduled</p>
+                  <p className="text-sm text-white/30">
+                    No upcoming events scheduled
+                  </p>
                   <Link
                     href="/events"
                     className="text-xs font-semibold text-[#ea6390] hover:text-white transition-colors duration-200"
@@ -423,7 +487,11 @@ export default function VenueDetailView({
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
                   animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className="relative flex flex-col items-center gap-3"
                 >
                   {/* Ping rings */}
