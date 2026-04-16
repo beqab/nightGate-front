@@ -47,7 +47,10 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+        transition={{
+          duration: 0.6,
+          ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+        }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
@@ -117,13 +120,18 @@ export default function Navbar() {
               className="md:hidden p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors"
               aria-label={t("toggleMenu")}
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
       </motion.nav>
 
       {/* Mobile menu */}
+      {/* // */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -154,10 +162,19 @@ export default function Navbar() {
                 );
               })}
               <div className="mt-4 pt-4 border-t border-white/5 flex flex-col gap-3">
-                <Button variant="ghost" size="md" className="w-full justify-center">
+                <Button
+                  variant="ghost"
+                  size="md"
+                  className="w-full justify-center"
+                >
                   {t("signIn")}
                 </Button>
-                <Button variant="primary" size="md" className="w-full justify-center" glow>
+                <Button
+                  variant="primary"
+                  size="md"
+                  className="w-full justify-center"
+                  glow
+                >
                   {t("getTickets")}
                 </Button>
               </div>
