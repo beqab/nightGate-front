@@ -268,7 +268,7 @@ export default function EventDetailView({
           transition={{ delay: 0.4, duration: 0.6 }}
           className="absolute top-24 left-0 right-0 flex justify-center z-10"
         >
-          <span className="px-5 py-2 rounded-full text-xs font-bold tracking-[0.2em] uppercase bg-black/35 backdrop-blur-lg border border-[#ea6390]/30 text-[#ea6390]">
+          <span className="px-5 mt-10 md:mt-0 py-2 rounded-full text-xs font-bold tracking-[0.2em] uppercase bg-black/35 backdrop-blur-lg border border-[#ea6390]/30 text-[#ea6390]">
             {event.category} · {event.tags.slice(0, 3).join(" · ")}
           </span>
         </motion.div>
@@ -485,7 +485,7 @@ export default function EventDetailView({
                         <p className="text-sm text-white/40 mt-1 line-clamp-2">
                           {venue.description}
                         </p>
-                        <div className="flex gap-4 mt-3 text-xs text-white/35">
+                        <div className="flex md:gap-4 gap-2 mt-3 text-xs text-white/35 flex-col md:flex-row">
                           <span className="flex items-center gap-1">
                             <MapPin className="w-3 h-3 text-[#9e4280]" />
                             {venue.neighborhood}, {venue.city}

@@ -185,7 +185,7 @@ export default function VenueDetailView({
           transition={{ delay: 0.35, duration: 0.6 }}
           className="absolute top-24 left-0 right-0 flex justify-center z-10"
         >
-          <span className="px-5 py-2 rounded-full text-xs font-bold tracking-[0.2em] uppercase bg-black/35 backdrop-blur-lg border border-white/15 text-white/55">
+          <span className="px-5 py-2 mt-10 md:mt-0 rounded-full text-xs font-bold tracking-[0.2em] uppercase bg-black/35 backdrop-blur-lg border border-white/15 text-white/55">
             {venue.type} · {venue.city}
           </span>
         </motion.div>

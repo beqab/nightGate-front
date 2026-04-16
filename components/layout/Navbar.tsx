@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navContainerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const t = useTranslations("nav");
   const navLinks = [
@@ -26,8 +27,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as Node;
+
+      if (!navContainerRef.current?.contains(target)) {
+        setMobileOpen(false);
+      }
+    };
+
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => window.removeEventListener("pointerdown", onPointerDown);
+  }, [mobileOpen]);
+
   return (
-    <>
+    <div ref={navContainerRef}>
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -149,6 +165,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
