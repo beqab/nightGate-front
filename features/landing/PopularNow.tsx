@@ -47,17 +47,17 @@ export default function PopularNow() {
                   ease: [0.25, 0.1, 0.25, 1],
                 },
               }}
-              className="group flex gap-4 glass neon-border rounded-2xl p-4 cursor-pointer hover:border-[#ea6390]/40 transition-[background,box-shadow,border-color,opacity] duration-300"
+              className="group relative flex gap-2 md:gap-4 glass neon-border rounded-2xl p-4 cursor-pointer hover:border-[#ea6390]/40 transition-[background,box-shadow,border-color,opacity] duration-300"
             >
               {/* Rank */}
-              <div className="shrink-0 flex items-center justify-center w-10">
+              <div className="shrink-0 hidden md:flex items-center justify-center w-10">
                 <span className="text-2xl font-black text-white/10 group-hover:text-[#ea6390]/20 transition-colors">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
 
               {/* Color swatch */}
-              <div className="shrink-0 w-20 h-20 rounded-xl overflow-hidden">
+              <div className="shrink-0 w-26 h-26 rounded-xl overflow-hidden">
                 <div
                   className="w-full h-full transition-transform duration-500 group-hover:scale-105"
                   style={{ background: event.gradient }}
@@ -81,20 +81,33 @@ export default function PopularNow() {
                   {copy.title}
                 </h4>
                 <p className="text-xs text-white/40 truncate">{event.venue}</p>
-                <div className="flex items-center gap-3 text-xs text-white/35">
+                <div className="flex-col md:flex-col justify-between  flex  gap-1 text-xs text-white/35">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     {formatDate(event.date, locale)}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Users className="w-3 h-3" />
-                    {formatNumber(event.attendees, locale)}
-                  </span>
+                  <div className="flex  flex-row gap-1 justify-between  ">
+                    <span className="flex items-center gap-1">
+                      <Users className="w-3 h-3" />
+                      {formatNumber(event.attendees, locale)}
+                    </span>
+                    <div className="text-right">
+                      <div className="w-16 h-1 rounded-full bg-white/10 overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-[#9e4280] to-[#ea6390]"
+                          style={{ width: `${Math.min(pct, 100)}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-white/30 mt-0.5 block">
+                        {t("popularNow.full", { percent: pct })}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Price */}
-              <div className="shrink-0 flex flex-col items-end justify-between">
+              <div className="shrink-0 flex flex-col items-end justify-between absolute right-4 top-4">
                 <span
                   className={`text-sm font-bold ${
                     event.price === 0 ? "text-emerald-400" : "text-[#ea6390]"
@@ -102,17 +115,6 @@ export default function PopularNow() {
                 >
                   {copy.priceLabel}
                 </span>
-                <div className="text-right">
-                  <div className="w-16 h-1 rounded-full bg-white/10 overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#9e4280] to-[#ea6390]"
-                      style={{ width: `${Math.min(pct, 100)}%` }}
-                    />
-                  </div>
-                  <span className="text-xs text-white/30 mt-0.5 block">
-                    {t("popularNow.full", { percent: pct })}
-                  </span>
-                </div>
               </div>
             </motion.div>
           );

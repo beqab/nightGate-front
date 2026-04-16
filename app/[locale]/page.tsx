@@ -1,24 +1,32 @@
-import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import ComingSoonPage from "@/features/comingSoon/ComingSoonPage";
+import Hero from "@/features/landing/Hero";
+import FeaturedEvents from "@/features/landing/FeaturedEvents";
+import TopVenues from "@/features/landing/TopVenues";
+import HowItWorks from "@/features/landing/HowItWorks";
+import PopularNow from "@/features/landing/PopularNow";
+import CtaBanner from "@/features/landing/CtaBanner";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({
-    locale,
-    namespace: "comingSoon.metadata",
-  });
+export default function HomePage() {
+  return (
+    <>
+      <Hero />
 
-  return {
-    title: t("title"),
-    description: t("description"),
-  };
-}
+      <div className="neon-divider mx-auto max-w-7xl px-8" />
 
-export default function Page() {
-  return <ComingSoonPage />;
+      <FeaturedEvents />
+
+      <div className="neon-divider mx-auto max-w-7xl px-8" />
+
+      <HowItWorks />
+
+      <div className="neon-divider mx-auto max-w-7xl px-8" />
+
+      <PopularNow />
+
+      <div className="neon-divider mx-auto max-w-7xl px-8" />
+
+      <TopVenues />
+
+      <CtaBanner />
+    </>
+  );
 }

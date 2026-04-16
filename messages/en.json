@@ -344,6 +344,7 @@
   "eventFilters": {
     "found": "{count} events found",
     "clear": "Clear filters",
+    "activeFilter": "Active filter:",
     "all": "All",
     "price": "Price",
     "prices": {

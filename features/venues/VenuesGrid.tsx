@@ -14,7 +14,9 @@ export default function VenuesGrid() {
   const locale = useLocale();
   const t = useTranslations();
   const [selectedType, setSelectedType] = useState<VenueType | "All">("All");
-  const [sortBy, setSortBy] = useState<"rating" | "capacity" | "name">("rating");
+  const [sortBy, setSortBy] = useState<"rating" | "capacity" | "name">(
+    "rating"
+  );
 
   const filteredVenues = useMemo(() => {
     let result = [...venues];
@@ -34,10 +36,14 @@ export default function VenuesGrid() {
     <div className="space-y-8">
       {/* Filter bar */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-white/50 text-sm">
+        <div className="flex md:items-center justify-between flex-col md:flex-row">
+          <div className="flex items-center gap-2 mb-3 md:mb-0 text-white/50 text-sm">
             <SlidersHorizontal className="w-4 h-4 text-[#ea6390]" />
-            <span>{t("venuesGrid.count", { count: formatNumber(filteredVenues.length, locale) })}</span>
+            <span>
+              {t("venuesGrid.count", {
+                count: formatNumber(filteredVenues.length, locale),
+              })}
+            </span>
           </div>
           <div className="flex items-center gap-1 glass rounded-xl px-1 py-1">
             {(["rating", "capacity", "name"] as const).map((opt) => (
@@ -88,10 +94,15 @@ export default function VenuesGrid() {
 
         {selectedType !== "All" && (
           <div className="flex items-center gap-2">
-            <span className="text-xs text-white/30">{t("venuesGrid.activeFilter")}</span>
+            <span className="text-xs text-white/30">
+              {t("venuesGrid.activeFilter")}
+            </span>
             <span className="flex items-center gap-1.5 px-3 py-1 text-xs rounded-full bg-[#ea6390]/10 border border-[#ea6390]/20 text-[#ea6390]">
               {getVenueTypeLabel(t, selectedType)}
-              <button onClick={() => setSelectedType("All")} className="hover:text-white transition-colors">
+              <button
+                onClick={() => setSelectedType("All")}
+                className="hover:text-white transition-colors"
+              >
                 <X className="w-3 h-3" />
               </button>
             </span>
@@ -112,8 +123,12 @@ export default function VenuesGrid() {
             className="flex flex-col items-center justify-center py-24 text-center"
           >
             <MapPin className="w-12 h-12 text-white/15 mb-4" />
-            <h3 className="text-lg font-bold text-white/40 mb-2">{t("venuesGrid.emptyTitle")}</h3>
-            <p className="text-sm text-white/25">{t("venuesGrid.emptyDescription")}</p>
+            <h3 className="text-lg font-bold text-white/40 mb-2">
+              {t("venuesGrid.emptyTitle")}
+            </h3>
+            <p className="text-sm text-white/25">
+              {t("venuesGrid.emptyDescription")}
+            </p>
           </motion.div>
         ) : (
           <motion.div
@@ -125,7 +140,12 @@ export default function VenuesGrid() {
             className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6"
           >
             {filteredVenues.map((venue, i) => (
-              <VenueCard key={venue.id} venue={venue} variant="featured" index={i} />
+              <VenueCard
+                key={venue.id}
+                venue={venue}
+                variant="featured"
+                index={i}
+              />
             ))}
           </motion.div>
         )}

@@ -344,6 +344,7 @@
   "eventFilters": {
     "found": "ნაპოვნია {count} ღონისძიება",
     "clear": "ფილტრების გასუფთავება",
+    "activeFilter": "აქტიური ფილტრი:",
     "all": "ყველა",
     "price": "ფასი",
     "prices": {
