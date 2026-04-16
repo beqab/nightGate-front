@@ -20,7 +20,8 @@ const syne = Syne({
 
 export const metadata: Metadata = {
   title: "NightGate",
-  description: "Discover premium nightlife events and standout venues with NightGate.",
+  description:
+    "Discover premium nightlife events and standout venues with NightGate.",
   keywords: ["nightlife", "events", "clubs", "venues", "tickets"],
 };
 

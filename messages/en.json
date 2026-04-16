@@ -127,6 +127,196 @@
     "browseEvents": "Browse Events",
     "exploreVenues": "Explore Venues"
   },
+  "comingSoon": {
+    "metadata": {
+      "title": "NightGate for Venues",
+      "description": "Fill your venue. Sell more tickets. All-in-one platform for venues: events, ticketing, guest list and fast entry."
+    },
+    "header": {
+      "requestDemo": "Request Demo",
+      "demoShort": "Demo"
+    },
+    "hero": {
+      "badge": "For Venues & Organizers",
+      "titleFirst": "Fill your venue.",
+      "titleSecond": "Sell more tickets.",
+      "description": "All-in-one platform for venues: events, ticketing, guest list and fast entry.",
+      "primaryCta": "Join as a Venue",
+      "secondaryCta": "Request Demo",
+      "helper": "Free to join during early access · No contracts"
+    },
+    "problem": {
+      "eyebrow": "Sound familiar?",
+      "title": "Running a venue is harder than it should be",
+      "items": {
+        "instagram": {
+          "title": "Relying only on Instagram",
+          "description": "One algorithm change and your reach collapses. You have no direct channel to your audience."
+        },
+        "guestList": {
+          "title": "Manual guest list chaos",
+          "description": "Spreadsheets, WhatsApp threads, and entry staff calling names aloud. Every event night becomes a bottleneck."
+        },
+        "revenue": {
+          "title": "Lost revenue from empty spots",
+          "description": "Without real-time visibility, you cannot optimize pricing or run timely last-minute promotions."
+        }
+      }
+    },
+    "solution": {
+      "eyebrow": "The Solution",
+      "title": "A single platform to manage your events and increase revenue",
+      "description": "NightGate brings together everything a modern venue needs: event publishing, online ticketing, digital guest lists, and QR-based entry in one clean, fast interface.",
+      "bullets": {
+        "one": "Replace 4+ tools with one platform",
+        "two": "Go live with an event in under 10 minutes",
+        "three": "Real-time data across your entire team"
+      }
+    },
+    "dashboard": {
+      "sidebar": {
+        "overview": "Overview",
+        "events": "Events",
+        "guestList": "Guest List",
+        "tickets": "Tickets",
+        "analytics": "Analytics"
+      },
+      "stats": {
+        "ticketsSold": {
+          "label": "Tickets Sold",
+          "value": "1,240",
+          "delta": "+18%"
+        },
+        "revenue": {
+          "label": "Revenue",
+          "value": "₾8,460",
+          "delta": "+24%"
+        },
+        "attendance": {
+          "label": "Attendance",
+          "value": "94%",
+          "delta": "+6%"
+        }
+      },
+      "activeEvents": "Active Events",
+      "percentSold": "{percent}% sold",
+      "events": {
+        "first": {
+          "name": "Friday Night",
+          "venue": "Club X",
+          "status": "Live"
+        },
+        "second": {
+          "name": "Saturday Rave",
+          "venue": "Bassline",
+          "status": "Upcoming"
+        },
+        "third": {
+          "name": "Techno Sunday",
+          "venue": "Bunker",
+          "status": "Draft"
+        }
+      }
+    },
+    "features": {
+      "eyebrow": "Platform Features",
+      "title": "Everything you need. Nothing you don't.",
+      "items": {
+        "tickets": {
+          "title": "Sell Tickets Online",
+          "description": "Launch ticket sales in minutes. Set tiers, limits, and early-bird pricing in one place."
+        },
+        "guestList": {
+          "title": "Automated Guest List",
+          "description": "Digital guest lists that sync in real time. No spreadsheets, no confusion at the door."
+        },
+        "qr": {
+          "title": "Fast Entry with QR",
+          "description": "Scan and verify guests in seconds. Reduce queues and improve the arrival experience."
+        },
+        "analytics": {
+          "title": "Event Performance Tracking",
+          "description": "See ticket sales, attendance, and revenue per event from a single dashboard."
+        }
+      }
+    },
+    "benefits": {
+      "eyebrow": "Business Impact",
+      "title": "Built to grow your business",
+      "items": {
+        "attendance": {
+          "title": "Increase Attendance",
+          "description": "Reach the right audience across multiple channels and fill your venue more consistently.",
+          "metric": "+34%",
+          "metricLabel": "avg. attendance lift"
+        },
+        "operations": {
+          "title": "Streamline Operations",
+          "description": "Replace fragmented tools with one platform and save hours every week on admin work.",
+          "metric": "4x",
+          "metricLabel": "faster guest entry"
+        },
+        "revenue": {
+          "title": "Generate More Revenue",
+          "description": "Capture online ticket revenue, upsell premium tiers, and avoid leaving money on the table.",
+          "metric": "+28%",
+          "metricLabel": "avg. revenue per event"
+        }
+      }
+    },
+    "socialProof": {
+      "eyebrow": "Early Access",
+      "title": "Launching with early partner venues in Tbilisi",
+      "description": "We're working with a select group of venues to shape the platform before public launch. Early partners get priority onboarding and locked-in pricing.",
+      "venues": {
+        "one": "Club Bassline",
+        "two": "Vault Tbilisi",
+        "three": "Fabric Bar",
+        "four": "Noir Lounge",
+        "five": "The Bunker",
+        "six": "Studio 404"
+      },
+      "testimonial": {
+        "quote": "Finally a platform built for how we actually operate, not some generic event tool. The guest list alone saved us 2 hours every event night.",
+        "author": "Venue Manager, Tbilisi",
+        "role": "Early Access Partner"
+      }
+    },
+    "lead": {
+      "eyebrow": "Get Started",
+      "title": "Apply for Early Access",
+      "description": "Limited spots available. Join the venues shaping the future of nightlife management in Georgia."
+    },
+    "form": {
+      "submit": "Apply for Early Access",
+      "helper": "No credit card required. We'll contact you within 48 hours.",
+      "fields": {
+        "venueName": {
+          "label": "Venue Name *",
+          "placeholder": "e.g. Club Bassline"
+        },
+        "contactPerson": {
+          "label": "Contact Person *",
+          "placeholder": "Your full name"
+        },
+        "email": {
+          "label": "Email *",
+          "placeholder": "you@venue.com"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+995 5XX XXX XXX"
+        }
+      },
+      "success": {
+        "title": "You're on the list.",
+        "description": "We'll reach out within 48 hours to schedule your onboarding call. Welcome to NightGate."
+      }
+    },
+    "footer": {
+      "tagline": "For Venues & Organizers"
+    }
+  },
   "eventsPage": {
     "metadata": {
       "title": "Events",

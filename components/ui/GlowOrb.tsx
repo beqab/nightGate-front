@@ -30,7 +30,7 @@ export default function GlowOrb({
               scale: [1, 1.08, 0.97, 1],
             }
           : { opacity, scale: 1 }
-      }
+      } 
       transition={
         animate
           ? {
