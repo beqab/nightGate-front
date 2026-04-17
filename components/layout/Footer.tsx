@@ -1,6 +1,7 @@
 import { Zap, Instagram, Twitter, Youtube } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import Logo from "../svg/logo";
 
 export default async function Footer() {
   const t = await getTranslations("footer");
@@ -43,8 +44,11 @@ export default async function Footer() {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 group mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ea6390] to-[#9e4280] flex items-center justify-center">
+              {/* <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ea6390] to-[#9e4280] flex items-center justify-center">
                 <Zap className="w-4 h-4 text-white fill-white" />
+              </div> */}
+              <div>
+                <Logo />
               </div>
               <span className="text-xl font-bold text-white">
                 Night<span className="gradient-text">Gate</span>
@@ -90,12 +94,8 @@ export default async function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/25">
-            {t("copyright")}
-          </p>
-          <p className="text-xs text-white/25">
-            {t("tagline")}
-          </p>
+          <p className="text-xs text-white/25">{t("copyright")}</p>
+          <p className="text-xs text-white/25">{t("tagline")}</p>
         </div>
       </div>
     </footer>
