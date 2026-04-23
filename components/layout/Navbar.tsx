@@ -73,7 +73,7 @@ export default function Navbar() {
                 <div className="absolute inset-0 rounded-lg bg-[#ea6390] blur-md opacity-30 group-hover:opacity-50 transition-opacity" />
               </div>
               <span
-                className="text-xl font-bold tracking-tight text-white"
+                className="text-xl font-bold tracking-tight text-white mt-2.5"
                 style={{ fontFamily: "var(--font-display, inherit)" }}
               >
                 Night<span className="gradient-text">Gate</span>

@@ -50,7 +50,7 @@ export default async function Footer() {
               <div>
                 <Logo />
               </div>
-              <span className="text-xl font-bold text-white">
+              <span className="text-xl font-bold text-white mt-2.5  translate-y-[-1px]">
                 Night<span className="gradient-text">Gate</span>
               </span>
             </Link>
