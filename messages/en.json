@@ -290,6 +290,13 @@
     "form": {
       "submit": "Apply for Early Access",
       "helper": "No credit card required. We'll contact you within 48 hours.",
+      "validation": {
+        "venueRequired": "Venue name is required",
+        "contactRequired": "Contact person is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "submitError": "Could not send the form. Please try again."
+      },
       "fields": {
         "venueName": {
           "label": "Venue Name *",

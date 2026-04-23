@@ -231,15 +231,78 @@ function LeadForm() {
     email: "",
     phone: "",
   });
+  const [errors, setErrors] = useState({
+    venue: "",
+    contact: "",
+    email: "",
+  });
+  const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const validate = () => {
+    const nextErrors = {
+      venue: "",
+      contact: "",
+      email: "",
+    };
+
+    if (!form.venue.trim()) nextErrors.venue = t("validation.venueRequired");
+    if (!form.contact.trim())
+      nextErrors.contact = t("validation.contactRequired");
+    if (!form.email.trim()) {
+      nextErrors.email = t("validation.emailRequired");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      nextErrors.email = t("validation.emailInvalid");
+    }
+
+    setErrors(nextErrors);
+    return !nextErrors.venue && !nextErrors.contact && !nextErrors.email;
+  };
+
+  const handleChange =
+    (field: "venue" | "contact" | "email" | "phone") =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      setForm((prev) => ({ ...prev, [field]: value }));
+      if (field !== "phone") {
+        setErrors((prev) => ({ ...prev, [field]: "" }));
+      }
+      if (submitError) setSubmitError("");
+    };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validate()) return;
+
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("https://formspree.io/f/mpqkkrqw", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          venue: form.venue.trim(),
+          contact: form.contact.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError(t("validation.submitError"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -275,14 +338,17 @@ function LeadForm() {
           <div className="relative">
             <Building2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
             <input
-              required
+              name="venue"
               type="text"
               placeholder={t("fields.venueName.placeholder")}
               value={form.venue}
-              onChange={(e) => setForm({ ...form, venue: e.target.value })}
+              onChange={handleChange("venue")}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
+          {errors.venue && (
+            <p className="text-xs text-[#ea6390]">{errors.venue}</p>
+          )}
         </div>
 
         <div className="space-y-1.5">
@@ -292,14 +358,17 @@ function LeadForm() {
           <div className="relative">
             <Users className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
             <input
-              required
+              name="contact"
               type="text"
               placeholder={t("fields.contactPerson.placeholder")}
               value={form.contact}
-              onChange={(e) => setForm({ ...form, contact: e.target.value })}
+              onChange={handleChange("contact")}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
+          {errors.contact && (
+            <p className="text-xs text-[#ea6390]">{errors.contact}</p>
+          )}
         </div>
 
         <div className="space-y-1.5">
@@ -309,14 +378,17 @@ function LeadForm() {
           <div className="relative">
             <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
             <input
-              required
+              name="email"
               type="email"
               placeholder={t("fields.email.placeholder")}
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={handleChange("email")}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
+          {errors.email && (
+            <p className="text-xs text-[#ea6390]">{errors.email}</p>
+          )}
         </div>
 
         <div className="space-y-1.5">
@@ -326,15 +398,18 @@ function LeadForm() {
           <div className="relative">
             <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
             <input
+              name="phone"
               type="tel"
               placeholder={t("fields.phone.placeholder")}
               value={form.phone}
-              onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              onChange={handleChange("phone")}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
         </div>
       </div>
+
+      {submitError && <p className="text-sm text-[#ea6390]">{submitError}</p>}
 
       <Button
         type="submit"
