@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
@@ -24,6 +24,8 @@ import {
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 import Button from "@/components/ui/Button";
 import { Link } from "@/i18n/navigation";
+import Logo from "@/components/svg/logo";
+import { cn } from "@/lib/utils";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -205,8 +207,8 @@ function DashboardMockup() {
                       event.status === "live"
                         ? "bg-emerald-500/15 text-emerald-400"
                         : event.status === "upcoming"
-                          ? "bg-[#ea6390]/15 text-[#ea6390]"
-                          : "bg-white/5 text-white/30"
+                        ? "bg-[#ea6390]/15 text-[#ea6390]"
+                        : "bg-white/5 text-white/30"
                     }`}
                   >
                     {event.statusLabel}
@@ -277,9 +279,7 @@ function LeadForm() {
               type="text"
               placeholder={t("fields.venueName.placeholder")}
               value={form.venue}
-              onChange={(e) =>
-                setForm({ ...form, venue: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, venue: e.target.value })}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
@@ -296,9 +296,7 @@ function LeadForm() {
               type="text"
               placeholder={t("fields.contactPerson.placeholder")}
               value={form.contact}
-              onChange={(e) =>
-                setForm({ ...form, contact: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, contact: e.target.value })}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
@@ -315,9 +313,7 @@ function LeadForm() {
               type="email"
               placeholder={t("fields.email.placeholder")}
               value={form.email}
-              onChange={(e) =>
-                setForm({ ...form, email: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
@@ -333,9 +329,7 @@ function LeadForm() {
               type="tel"
               placeholder={t("fields.phone.placeholder")}
               value={form.phone}
-              onChange={(e) =>
-                setForm({ ...form, phone: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
               className="w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border border-white/10 rounded-xl text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#ea6390]/50 focus:bg-white/[0.06] transition-colors"
             />
           </div>
@@ -365,6 +359,13 @@ function LeadForm() {
 
 export default function ComingSoonPage() {
   const t = useTranslations("comingSoon");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const problems = [
     {
@@ -452,18 +453,20 @@ export default function ComingSoonPage() {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 inset-x-0 z-50 border-b border-white/5 glass"
+        className={cn(
+          "fixed top-0 inset-x-0 z-50 transition-all duration-500",
+          scrolled
+            ? "bg-[#080514]/80 backdrop-blur-2xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            : "bg-transparent"
+        )}
       >
         <div className="flex items-center justify-between gap-4 px-6 md:px-12 py-4">
           <Link href="/" className="flex items-center gap-2 group shrink-0">
-            <div className="relative">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ea6390] to-[#9e4280] flex items-center justify-center shadow-[0_0_16px_rgba(234,99,144,0.5)] group-hover:shadow-[0_0_24px_rgba(234,99,144,0.7)] transition-shadow duration-300">
-                <Zap className="w-4 h-4 text-white fill-white" />
-              </div>
-              <div className="absolute inset-0 rounded-lg bg-[#ea6390] blur-md opacity-30 group-hover:opacity-50 transition-opacity" />
+            <div>
+              <Logo />
             </div>
             <span
-              className="text-xl font-bold tracking-tight text-white"
+              className="text-xl font-bold tracking-tight text-white mt-2.5"
               style={{ fontFamily: "var(--font-display, inherit)" }}
             >
               Night<span className="gradient-text">Gate</span>
@@ -476,7 +479,9 @@ export default function ComingSoonPage() {
               href="#apply"
               className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-semibold bg-[#ea6390]/10 border border-[#ea6390]/25 text-[#ea6390] hover:bg-[#ea6390]/20 hover:border-[#ea6390]/50 transition-colors"
             >
-              <span className="hidden sm:inline">{t("header.requestDemo")}</span>
+              <span className="hidden sm:inline">
+                {t("header.requestDemo")}
+              </span>
               <span className="sm:hidden">{t("header.demoShort")}</span>
               <ChevronRight className="w-4 h-4" />
             </a>
@@ -720,9 +725,7 @@ export default function ComingSoonPage() {
                       <feature.icon className="w-6 h-6 text-[#ea6390]" />
                     </div>
                     <div className="space-y-1.5">
-                      <h3 className="font-bold text-white">
-                        {feature.title}
-                      </h3>
+                      <h3 className="font-bold text-white">{feature.title}</h3>
                       <p className="text-sm text-white/45 leading-relaxed">
                         {feature.desc}
                       </p>
@@ -894,14 +897,11 @@ export default function ComingSoonPage() {
       <footer className="border-t border-white/5 py-8 px-6">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ea6390] to-[#9e4280] flex items-center justify-center shadow-[0_0_16px_rgba(234,99,144,0.5)] group-hover:shadow-[0_0_24px_rgba(234,99,144,0.7)] transition-shadow duration-300">
-                <Zap className="w-4 h-4 text-white fill-white" />
-              </div>
-              <div className="absolute inset-0 rounded-lg bg-[#ea6390] blur-md opacity-30 group-hover:opacity-50 transition-opacity" />
+            <div>
+              <Logo />
             </div>
             <span
-              className="text-xl font-bold tracking-tight text-white"
+              className="text-xl font-bold tracking-tight text-white  translate-y-[4px]"
               style={{ fontFamily: "var(--font-display, inherit)" }}
             >
               Night<span className="gradient-text">Gate</span>

@@ -8,6 +8,7 @@ import Button from "@/components/ui/Button";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import Logo from "../svg/logo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -46,14 +47,11 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="relative">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ea6390] to-[#9e4280] flex items-center justify-center shadow-[0_0_16px_rgba(234,99,144,0.5)] group-hover:shadow-[0_0_24px_rgba(234,99,144,0.7)] transition-shadow duration-300">
-                  <Zap className="w-4 h-4 text-white fill-white" />
-                </div>
-                <div className="absolute inset-0 rounded-lg bg-[#ea6390] blur-md opacity-30 group-hover:opacity-50 transition-opacity" />
+              <div>
+                <Logo />
               </div>
               <span
-                className="text-xl font-bold tracking-tight text-white"
+                className="text-xl font-bold tracking-tight text-white "
                 style={{ fontFamily: "var(--font-display, inherit)" }}
               >
                 Night<span className="gradient-text">Gate</span>
