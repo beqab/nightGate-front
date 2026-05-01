@@ -13,7 +13,7 @@ import {
   Instagram,
   Mail,
   Phone,
-  QrCode,
+  Compass,
   Shield,
   Star,
   Ticket,
@@ -130,7 +130,7 @@ function DashboardMockup() {
         <div className="w-2.5 h-2.5 rounded-full bg-[#9e4280]/40" />
         <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
         <span className="ml-2 text-[10px] text-white/30 font-mono">
-          nightgate.io/dashboard
+          nightgate.ge/dashboard
         </span>
       </div>
 
@@ -462,6 +462,11 @@ export default function ComingSoonPage() {
 
   const features = [
     {
+      icon: Compass,
+      title: t("features.items.qr.title"),
+      desc: t("features.items.qr.description"),
+    },
+    {
       icon: Ticket,
       title: t("features.items.tickets.title"),
       desc: t("features.items.tickets.description"),
@@ -471,11 +476,7 @@ export default function ComingSoonPage() {
       title: t("features.items.guestList.title"),
       desc: t("features.items.guestList.description"),
     },
-    {
-      icon: QrCode,
-      title: t("features.items.qr.title"),
-      desc: t("features.items.qr.description"),
-    },
+
     {
       icon: BarChart3,
       title: t("features.items.analytics.title"),
@@ -849,15 +850,15 @@ export default function ComingSoonPage() {
                     <benefit.icon className="w-6 h-6 text-[#ea6390]" />
                   </div>
                   <div>
-                    <p
+                    {/* <p
                       className="text-4xl font-black gradient-text"
                       style={{ fontFamily: "var(--font-display)" }}
                     >
                       {benefit.metric}
-                    </p>
-                    <p className="text-xs text-white/35 mt-1">
+                    </p> */}
+                    {/* <p className="text-xs text-white/35 mt-1">
                       {benefit.metricLabel}
-                    </p>
+                    </p> */}
                   </div>
                   <div className="space-y-1.5">
                     <h3 className="font-bold text-white">{benefit.title}</h3>

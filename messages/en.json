@@ -138,39 +138,39 @@
     },
     "hero": {
       "badge": "For Venues & Organizers",
-      "titleFirst": "Fill your venue.",
-      "titleSecond": "Sell more tickets.",
-      "description": "All-in-one platform for venues: events, ticketing, guest list and fast entry.",
+      "titleFirst": "Attract more guests.",
+      "titleSecond": "Increase revenue.",
+      "description": "NightGate connects you with people already looking for where to go tonight - tourists and local audiences in one place.",
       "primaryCta": "Join as a Venue",
-      "secondaryCta": "Request Demo",
-      "helper": "Free to join during early access · No contracts"
+      "secondaryCta": "Request a Demo",
+      "helper": "Early partnership — try it for free and get additional benefits"
     },
     "problem": {
       "eyebrow": "Sound familiar?",
-      "title": "Running a venue is harder than it should be",
+      "title": "Why are you losing customers every day?",
       "items": {
         "instagram": {
-          "title": "Relying only on Instagram",
-          "description": "One algorithm change and your reach collapses. You have no direct channel to your audience."
+          "title": "Instagram alone is not enough",
+          "description": "Your content is mostly seen by people who already know you, making it harder to attract new customers."
         },
         "guestList": {
-          "title": "Manual guest list chaos",
-          "description": "Spreadsheets, WhatsApp threads, and entry staff calling names aloud. Every event night becomes a bottleneck."
+          "title": "Fewer tourists find you than search for you",
+          "description": "Tens of thousands of tourists search for where to go in the evening, but due to lack of information, most stay on the same \"worn-out\" tourist routes."
         },
         "revenue": {
-          "title": "Lost revenue from empty spots",
-          "description": "Without real-time visibility, you cannot optimize pricing or run timely last-minute promotions."
+          "title": "A complex process loses guests",
+          "description": "Information is scattered — every extra step reduces the likelihood of making a decision."
         }
       }
     },
     "solution": {
       "eyebrow": "The Solution",
-      "title": "A single platform to manage your events and increase revenue",
-      "description": "NightGate brings together everything a modern venue needs: event publishing, online ticketing, digital guest lists, and QR-based entry in one clean, fast interface.",
+      "title": "We turn demand into real guests",
+      "description": "NightGate combines discovery, selection, and ticket purchase in one place — users make decisions faster and come directly to you.",
       "bullets": {
-        "one": "Replace 4+ tools with one platform",
-        "two": "Go live with an event in under 10 minutes",
-        "three": "Real-time data across your entire team"
+        "one": "Get users who are already searching for where to go",
+        "two": "Simplify the process and increase the number of guests who actually show up",
+        "three": "Manage events and sales in one place"
       }
     },
     "dashboard": {
@@ -224,35 +224,35 @@
       "items": {
         "tickets": {
           "title": "Sell Tickets Online",
-          "description": "Launch ticket sales in minutes. Set tiers, limits, and early-bird pricing in one place."
+          "description": "Sell tickets directly on the platform — simply, without extra steps."
         },
         "guestList": {
           "title": "Automated Guest List",
-          "description": "Digital guest lists that sync in real time. No spreadsheets, no confusion at the door."
+          "description": "Manage the guest list and verify guests quickly in one system."
         },
         "qr": {
-          "title": "Fast Entry with QR",
-          "description": "Scan and verify guests in seconds. Reduce queues and improve the arrival experience."
+          "title": "Tourist and Local Guide",
+          "description": "We connect you with users already searching for where to go — tourists and local audiences in one place."
         },
         "analytics": {
-          "title": "Event Performance Tracking",
-          "description": "See ticket sales, attendance, and revenue per event from a single dashboard."
+          "title": "Analytics",
+          "description": "See sales and results — understand what works best."
         }
       }
     },
     "benefits": {
       "eyebrow": "Business Impact",
-      "title": "Built to grow your business",
+      "title": "What you get with NightGate",
       "items": {
         "attendance": {
-          "title": "Increase Attendance",
-          "description": "Reach the right audience across multiple channels and fill your venue more consistently.",
+          "title": "Get additional customers",
+          "description": "We connect you with people who are already searching for where to go today.",
           "metric": "+34%",
           "metricLabel": "avg. attendance lift"
         },
         "operations": {
-          "title": "Streamline Operations",
-          "description": "Replace fragmented tools with one platform and save hours every week on admin work.",
+          "title": "Simplify processes",
+          "description": "A simple process increases decision-making and, in turn, sales.",
           "metric": "4x",
           "metricLabel": "faster guest entry"
         },
