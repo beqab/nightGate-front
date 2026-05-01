@@ -514,14 +514,14 @@ export default function ComingSoonPage() {
     t("solution.bullets.three"),
   ];
 
-  const partnerVenues = [
-    t("socialProof.venues.one"),
-    t("socialProof.venues.two"),
-    t("socialProof.venues.three"),
-    t("socialProof.venues.four"),
-    t("socialProof.venues.five"),
-    t("socialProof.venues.six"),
-  ];
+  // const partnerVenues = [
+  //   t("socialProof.venues.one"),
+  //   t("socialProof.venues.two"),
+  //   t("socialProof.venues.three"),
+  //   t("socialProof.venues.four"),
+  //   t("socialProof.venues.five"),
+  //   t("socialProof.venues.six"),
+  // ];
 
   return (
     <div className="min-h-screen bg-[#080514] text-white overflow-x-hidden">
