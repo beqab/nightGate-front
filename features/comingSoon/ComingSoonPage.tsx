@@ -627,13 +627,13 @@ export default function ComingSoonPage() {
 
           <motion.div variants={fadeUp} className="space-y-2">
             <h1
-              className="text-5xl sm:text-7xl md:text-8xl font-black leading-none tracking-tighter text-white"
+              className="text-5xl sm:text-7xl md:text-8xl font-black leading-tight tracking-tighter text-white"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {t("hero.titleFirst")}
             </h1>
             <h1
-              className="text-5xl sm:text-7xl md:text-8xl font-black leading-none tracking-tighter gradient-text"
+              className="text-5xl sm:text-7xl md:text-8xl font-black leading-tight tracking-tighter gradient-text"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {t("hero.titleSecond")}
