@@ -258,7 +258,7 @@
         },
         "revenue": {
           "title": "Generate More Revenue",
-          "description": "Capture online ticket revenue, upsell premium tiers, and avoid leaving money on the table.",
+          "description": "Simple and fast processes increase ticket sales and, ultimately, your revenue.",
           "metric": "+28%",
           "metricLabel": "avg. revenue per event"
         }
@@ -284,8 +284,8 @@
     },
     "lead": {
       "eyebrow": "Get Started",
-      "title": "Apply for Early Access",
-      "description": "Limited spots available. Join the venues shaping the future of nightlife management in Georgia."
+      "title": "Become an early NightGate partner",
+      "description": "Become an early partner — try it for free and get exclusive terms."
     },
     "form": {
       "submit": "Apply for Early Access",

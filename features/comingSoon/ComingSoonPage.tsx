@@ -873,7 +873,7 @@ export default function ComingSoonPage() {
         </div>
       </section>
 
-      <section className="section-padding px-6 relative">
+      {/* <section className="section-padding px-6 relative">
         <div className="neon-divider mb-16" />
         <div className="max-w-4xl mx-auto">
           <InView className="space-y-10 text-center">
@@ -935,7 +935,7 @@ export default function ComingSoonPage() {
             </motion.div>
           </InView>
         </div>
-      </section>
+      </section> */}
 
       <section id="apply" className="section-padding px-6 relative">
         <div
